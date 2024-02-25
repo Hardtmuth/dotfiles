@@ -1,0 +1,44 @@
+[shell]
+program = "pwsh"
+args = ["-noe -wd ~ -c clear"]
+
+[window]
+dynamic_title = false
+opacity = 0.9
+title = "Terminal"
+padding = { x = 12, y = 12 }
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 12.0
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.primary]
+background = '0x1b2932'
+foreground = '0xc7ccd1'
+
+[colors.cursor]
+text = '0x1c2023'
+cursor = '0xc7ccd1'
+
+[colors.normal]
+black = '0x17232b'
+red = '0xb96346'
+green = '0x3f8d6c'
+yellow = '0xc09159'
+blue = '0x3f848d'
+magenta = '0xa97ea1'
+cyan = '0x5998c0'
+white = '0xc7ccd1'
+
+[colors.bright]
+black = '0x2a4152'
+red = '0xcc9f4c'
+green = '0x61d9a6'
+yellow = '0xffc076'
+blue = '0x71dbff'
+magenta = '0xc290b8'
+cyan = '0x76b6ff'
+white = '0xf3f4f5'
