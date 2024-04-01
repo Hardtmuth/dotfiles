@@ -3,3 +3,4 @@ dunst
 hypridle
 wl-paste
 hyprpaper
+blueberry
