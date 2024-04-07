@@ -1,0 +1,41 @@
+* {
+    font-family: JetBrainsMono;
+    color: #c7ccd1;
+    background: transparent;
+  }
+  
+  #window {
+    background: #1b2932;
+    opacity: 0.8;
+    margin: auto;
+    padding: 2px;
+    border-radius: 10px;
+    border: 1px solid #3f8d6c;
+  }
+  
+  #input {
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 10px;
+  }
+  
+  #outer-box {
+    padding: 10px;
+  }
+  
+  #img {
+    margin-right: 6px;
+  }
+  
+  #entry {
+    padding: 10px;
+    border-radius: 10px;
+  }
+  
+  #entry:selected {
+    background-color: #17232b;
+  }
+  
+  #text {
+    margin: 2px;
+  }

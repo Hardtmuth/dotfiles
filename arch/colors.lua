@@ -1,0 +1,16 @@
+{
+    bg0           : '#1E2931',
+    bg1           : '#223441',
+    bg_green      : '#3f8d6c',
+    fg            : '#C6CDD2',
+    red           : '#BF616A',
+    orange        : '#D66D41',
+    yellow        : '#DDB988',
+    green         : '#16b673',
+    cyan          : '#4CA1B3',
+    blue          : '#64AAE4',
+    purple        : '#6D61E3',
+    grey          : '#455B5F',
+    light_grey    : '#64848A',
+    light_yellow  : '#DDB988',
+  };

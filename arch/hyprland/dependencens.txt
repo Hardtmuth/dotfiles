@@ -1,6 +1,0 @@
-polkit-gnome-authentication-agent-1
-dunst
-hypridle
-wl-paste
-hyprpaper
-blueberry

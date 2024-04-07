@@ -1,0 +1,45 @@
+[shell]
+program = "zsh"
+
+[window]
+opacity = 0.9
+title = "Terminal"
+padding = { x = 12, y = 12 }
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Regular" }
+size = 12.0
+
+[selection]
+save_to_clipboard = true
+
+[colors]
+draw_bold_text_with_bright_colors = false
+
+[colors.primary]
+background = '0x1E2931'
+foreground = '0xC6CDD2'
+
+[colors.cursor]
+text = '0x1E2931'
+cursor = '0xC6CDD2'
+
+[colors.normal]
+black = '0x223441'
+red = '0xD66D41'
+green = '0x16b673'
+yellow = '0xd5971a'
+blue = '0x5998c0'
+magenta = '0xBF8FA1'
+cyan = '0x5b858b'
+white = '0xC6CDD2'
+
+[colors.bright]
+black = '0x17232b'
+red = '0xb96346'
+green = '0x3f8d6c'
+yellow = '0xc09159'
+blue = '0x3f848d'
+magenta = '0xa97ea1'
+cyan = '0x5998c0'
+white = '0xc7ccd1'
