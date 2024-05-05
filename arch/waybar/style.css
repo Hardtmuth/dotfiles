@@ -4,13 +4,14 @@
 @define-color warning #DDB988;
 @define-color critical #BF616A;
 @define-color good #3f8d6c;
+@define-color accent #5E81AC;
 
 /* Reset all styles */
 * {
   border: none;
   border-radius: 3px;
   min-height: 0;
-  margin: 0.1em 0.25em 0.1em 0.25em;
+  margin: 0.1em 0.25em 0 0.25em;
 }
 
 /* The whole bar */
@@ -18,8 +19,9 @@
   background-color: rgba(30, 41,49, 0);
   color: @fg;
   font-family: "JetBrainsMono Nerd Font", "Font Awesome 5 Pro";
-  font-size: 12px;
-  font-weight: bold;
+  font-size: 14px;
+  min-height: 0;
+  /* font-weight: bold; */
 }
 
 /* Each module */
@@ -89,7 +91,8 @@
 
 /* Left modules */
 #custom-hostname {
-  background: @bg;
+  background: @accent;
+  color: @bg;
 }
 
 #custom-cliphist {
@@ -99,10 +102,13 @@
 /* Workspaces stuff */
 #workspaces button {
   background-color: @bg;
+  /* font-size: 1em; */
+  padding:0.2em 0em;
 }
 #workspaces button.active {
   background-color: @good;
-  color: @fg;
+  color: @bg;
+  padding: 0 0.6em;
 }
 
 #workspaces button.urgent {
@@ -121,8 +127,8 @@
 }
 
 #clock {
-  background: @bg;
-  color: @fg;
+  background: @accent;
+  color: @bg;
 }
 
 #language {
@@ -135,6 +141,7 @@
   background: @bg;
   /*font-size: 1.6em;*/
   font-weight: bold;
+  padding-right: 0.9em;
 }
 
 #cpu {
@@ -188,9 +195,10 @@
 }
 
 #bluetooth {
-  background: @bg;
+  background: @accent;
+  color: @bg;
   font-size: 1.2em;
-  font-weight: bold;
+  padding-right: 0.7em;
 }
 
 #battery {
@@ -207,7 +215,9 @@
 }
 
 #custom-powermenu {
-  background: @bg;
+  background: @warning;
+  color: @bg;
+  padding-right: 0.9em;
 }
 
 /* Blinking */
