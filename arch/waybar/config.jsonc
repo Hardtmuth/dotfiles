@@ -45,7 +45,7 @@
     },
 
     "custom/cliphist": {
-        "format": "",
+        "format": "",
         "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
         "on-click-right": "cliphist wipe",
         "tooltip": false
@@ -72,9 +72,8 @@
     },
 
     "hyprland/window": {
-        "format": "{}",
-        "max-length": 50, 
-        "tooltip": false
+        "format": "{class}",
+		"separate-outputs": false
     },
 
     /* Modules Center */
@@ -121,7 +120,7 @@
     },
 
     "cpu": {
-        "interval": "1",      
+        "interval": "1",
         "format": "  {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
         "max-length": 15,
         "min-length": 15,
