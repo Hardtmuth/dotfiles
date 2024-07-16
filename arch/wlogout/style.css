@@ -44,35 +44,35 @@ Buttons
 #lock {
 	margin: 10px;
 	border-radius: 20px;
-	background-image: image(url("icons/lock_white.png"));
+	/* background-image: image(url("icons/lock_white.png")); */
 }
 
 #logout {
 	margin: 10px;
 	border-radius: 20px;
-	background-image: image(url("icons/logout_white.png"));
+	/* background-image: image(url("icons/logout_white.png")); */
 }
 
 #suspend {
 	margin: 10px;
 	border-radius: 20px;
-	background-image: image(url("icons/suspend_white.png"));
+	/* background-image: image(url("icons/suspend_white.png")); */
 }
 
 #hibernate {
 	margin: 10px;
 	border-radius: 20px;
-	background-image: image(url("icons/hibernate_white.png"));
+	/* background-image: image(url("icons/hibernate_white.png")); */
 }
 
 #shutdown {
 	margin: 10px;
 	border-radius: 20px;
-	background-image: image(url("icons/shutdown_white.png"));
+	/* background-image: image(url("icons/shutdown_white.png")); */
 }
 
 #reboot {
 	margin: 10px;
 	border-radius: 20px;
-	background-image: image(url("icons/reboot_white.png"));
+	/* background-image: image(url("icons/reboot_white.png")); */
 }

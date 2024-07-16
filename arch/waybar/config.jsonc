@@ -1,4 +1,4 @@
-{
+[{
     "layer": "top",
     "position": "top",
     "modules-left": [
@@ -8,12 +8,13 @@
         "hyprland/window"
     ],
     "modules-center": [ 
-        "custom/weather", 
+        /* "custom/weather",  */
         "clock", 
         "hyprland/language"
     ],
     "modules-right": [
         "group/hardware", 
+        "custom/themeswitcher",
         "pulseaudio", 
         "bluetooth", 
         "battery", 
@@ -28,7 +29,7 @@
         "drawer": { 
             "transition-duration": 500, 
             "children-class": "not-power", 
-            "transition-left-right": false, 
+            "transition-left-right": false
         },
         "modules": [
             "custom/pacman",
@@ -40,18 +41,19 @@
     },
     /* Modules Left */
     "custom/hostname": {
-        "format": " ThinkPad-x1 ",
-        "on-click": "wofi --show drun"
+        "format": "󰣇 ThinkPad-x1 ",
+        "on-click": "wofi --show drun -a -w 2",
+        "on-click-right": "/home/link/Documents/shortcuts.sh"
     },
 
     "custom/cliphist": {
-        "format": "",
+        "format": "",
         "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
         "on-click-right": "cliphist wipe",
         "tooltip": false
     },
 
-    "hyprland/workspaces": {
+    /* "hyprland/workspaces": {
         "disable-scroll": true,
         "all-outputs": true,
         "on-click": "activate",
@@ -69,11 +71,25 @@
             "0": "  0",
             "urgent": "   "
         }
+    }, */
+    "hyprland/workspaces": {
+      "format": "{name}",
+      /* "format": "{icon}", */
+      "tooltip": false,
+      "all-outputs": true, 
+      "on-click": "activate",
+      "disable-scroll": true,
+      "format-icons": {
+        "active": "🟢",
+        "default": "🟩",
+        "urgent": "  "
+      }
     },
 
     "hyprland/window": {
-        "format": "{class}",
-		"separate-outputs": false
+        "format": "  {class} ",
+		"separate-outputs": false,
+        "on-click": "nemo"
     },
 
     /* Modules Center */
@@ -95,14 +111,14 @@
     },
 
     "clock": {
-        "format": " {:%A %e %B %Y    %H:%M}",
+        "format": " {:%A %e %B %Y   %H:%M} |",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "today-format": "<b>{}</b>",
         "on-click": "gnome-calendar"
     },
 
     "hyprland/language": {
-        "format": " {}",
+        "format": " {}",
         "format-en": "US",
         "format-ru": "RU",
         "max-length": 5,
@@ -147,7 +163,7 @@
 
     "disk": {
         "interval": 30,
-        "format": " {free} ",
+        "format": "󰋊 {free} ",
         "path": "/",
         "max-length": 50
     },
@@ -161,6 +177,13 @@
         "signal": 8,
         "max-length": 10,
         "min-length": 5
+    },
+
+    "custom/themeswitcher": {
+        "format": "",
+        "on-click": "/home/link/Documents/theme_switcher.sh light",
+        "on-click-right": "/home/link/Documents/theme_switcher.sh dark",
+        "tooltip": false
     },
 
     "pulseaudio": {
@@ -215,17 +238,181 @@
         "format-alt": "{ifname}: {ipaddr}/{cidr}",
         "family": "ipv4",
         "tooltip-format-wifi": "   {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",
-        "tooltip-format-ethernet": "   {ifname}\nIP: {ipaddr}\n {bandwidthUpBits}  {bandwidthDownBits}"
+        "tooltip-format-ethernet": "   {ifname}\nIP: {ipaddr}\n {bandwidthUpBits}  {bandwidthDownBits}",
+        "on-click-right": "./Documents/wofi_actions/wifi_menu.sh"
     },
-    
+
     "tray": {
         "spacing": 5
     },
-    
+
     "custom/powermenu": {
 		"format": "⏻",
         "tooltip": false,
-        "on-click": "wlogout --protocol layer-shell"
+        "on-click": "./Documents/wofi_actions/powermenu.sh"
     }
-}
+},
+
+{
+    "layer": "top",
+    "exclusive": true,
+    "mod": "dock",
+    "passthrough": false,
+    "position": "bottom",
+    "fixed-center": true,
+    "ipc": true,
+    "height": 0,
+    "gtk-layer-shell": true,
+
+    "modules-center": [
+        "custom/filemanager",
+        "custom/browser",
+        "custom/mail",
+        "custom/todo",
+        "custom/notes",
+        "custom/rdm",
+        "custom/winbox",
+        "custom/code",
+        "custom/github",
+        "custom/term",
+        "custom/office",
+        "custom/telegram",
+        "custom/whatsapp",
+        "custom/mattermost",
+        "custom/zoom"
+    ],
+
+    "custom/left": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false
+    },
+
+    "custom/right": {
+        "format": " ",
+        "interval": "once",
+        "tooltip": false
+    },
+
+    "custom/filemanager": {
+        //"format": "{} <span font='38'>󰉋</span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Filemanager",
+        "on-click": "nemo"
+    },
+
+    "custom/browser": {
+        //"format": "{} <span font='38'></span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Chrome",
+        "on-click": "google-chrome-stable"
+    },
+
+    "custom/mail": {
+        //"format": "{} <span font='38'>󰶍</span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Mail",
+        "on-click": "thunderbird"
+    },
+
+    "custom/todo": {
+        //"format": "{} <span font='38'>󰶍</span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "ToDo",
+        "on-click": "ticktick"
+    },
+
+    "custom/notes": {
+        //"format": "{} <span font='38'>󰶍</span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Notes",
+        "on-click": "obsidian"
+    },
+
+    "custom/rdm": {
+        //"format": "{} <span font='38'>󰶍</span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Connections",
+        "on-click": "remotedesktopmanager"
+    },
+
+    "custom/winbox": {
+        //"format": "{} <span font='38'>󰶍</span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Winbox",
+        "on-click": "winbox"
+    },
+
+    "custom/code": {
+        //"format": "{} <span font='38'>󰨞</span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Code",
+        "on-click": "code"
+    },
+
+    "custom/github": {
+        //"format": "{} <span font='38'>󰨞</span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "GitHub",
+        "on-click": "github-desktop"
+    },
+
+    "custom/term": {
+        //"format": "{} <span font='28'></span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Terminal",
+        "on-click": "kitty"
+    },
+
+    "custom/office": {
+        //"format": "{} <span font='38'></span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Office",
+        "on-click": "onlyoffice-desktopeditors"
+    },
+
+    "custom/telegram": {
+        //"format": "{} <span font='38'></span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Telegram",
+        "on-click": "telegram-desktop"
+    },
+
+    "custom/whatsapp": {
+        //"format": "{} <span font='38'></span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Whatsapp",
+        "on-click": "whatsdesk"
+    },
+
+    "custom/mattermost": {
+        //"format": "{} <span font='38'></span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Mattermost",
+        "on-click": "mattermost-desktop"
+    },
+
+    "custom/zoom": {
+        //"format": "{} <span font='38'></span>",
+        "format": "{} ",
+        "tooltip": true,
+        "tooltip-format": "Zoom",
+        "on-click": "zoom"
+    }
+
+} ]
 

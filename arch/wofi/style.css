@@ -1,16 +1,18 @@
+@import url("/home/link/.config/waybar/waybar_colors/dark-colors.css");
+/* @import url("/home/link/.config/waybar/waybar_colors/dark-colors.css"); */
+
 * {
-  font-family: JetBrainsMono;
-  color: #c7ccd1;
+  color: @fg;
   background: transparent;
 }
 
 #window {
-  background: #1b2932;
+  background: @bg;
   opacity: 0.8;
   margin: auto;
   padding: 2px;
   border-radius: 10px;
-  border: 1px solid #3f8d6c;
+  border: 1px solid @accent;
 }
 
 #input {
@@ -33,7 +35,7 @@
 }
 
 #entry:selected {
-  background-color: #17232b;
+  background-color: @accent;
 }
 
 #text {

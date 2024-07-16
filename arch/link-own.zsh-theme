@@ -75,7 +75,7 @@ prompt_segment() {
 
 prompt_start() {
   #echo -n ""
-  prompt_segment $CURRENT_BG white "\ue0b6"
+  prompt_segment $CURRENT_BG green "\ue0b6$bg[green]$fg[black]󰋊"
 }
 
 # End the prompt, closing any open segments
@@ -95,7 +95,8 @@ prompt_end() {
 # Context: user@hostname (who am I and where am I)
 prompt_context() {
   if [[ "$USERNAME" != "$DEFAULT_USER" || -n "$SSH_CLIENT" ]]; then
-    prompt_segment white black "%(!.%{%F{blue}%}.)%F{yellow}%n%F{black}@%F{green}%m"
+    prompt_segment green black "%F{black}%n"
+    # prompt_segment white black "%(!.%{%F{blue}%}.)%F{yellow}%n%F{black}@%F{green}%m"
   fi
 }
 
@@ -238,11 +239,11 @@ prompt_virtualenv() {
 prompt_status() {
   local -a symbols
 
-  [[ $RETVAL -ne 0 ]] && symbols+="%{%F{red}%}✘"
-  [[ $UID -eq 0 ]] && symbols+="%{%F{yellow}%}⚡"
-  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="%{%F{cyan}%}⚙"
+  [[ $RETVAL -ne 0 ]] && symbols+="$bg[green]$fg[red]✘"
+  [[ $UID -eq 0 ]] && symbols+="$bg[green]$fg[yellow]⚡"
+  [[ $(jobs -l | wc -l) -gt 0 ]] && symbols+="$bg[green]$fg[cyan]⚙"
 
-  [[ -n "$symbols" ]] && prompt_segment black default "$symbols"
+  [[ -n "$symbols" ]] && prompt_segment green default "$symbols"
 }
 
 #AWS Profile:
