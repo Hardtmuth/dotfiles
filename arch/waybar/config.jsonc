@@ -8,40 +8,22 @@
         "hyprland/window"
     ],
     "modules-center": [ 
-        /* "custom/weather",  */
         "clock", 
         "hyprland/language"
     ],
     "modules-right": [
-        "group/hardware", 
-        "custom/themeswitcher",
-        "pulseaudio", 
-        "bluetooth", 
-        "battery", 
-        "network", 
-        "tray", 
+        "custom/pacman",
+        "pulseaudio",
+        "bluetooth",
+        "battery",
+        "network",
+        "tray",
         "custom/powermenu"
     ],
 
-    /* Group */
-    "group/hardware": {
-        "orientation": "horizontal",
-        "drawer": { 
-            "transition-duration": 500, 
-            "children-class": "not-power", 
-            "transition-left-right": false
-        },
-        "modules": [
-            "custom/pacman",
-			"idle_inhibitor",
-            "cpu",
-            "memory",
-            "disk"
-		]
-    },
     /* Modules Left */
     "custom/hostname": {
-        "format": "󰣇 ThinkPad-x1 ",
+        "format": "󰣇 Think and keep it simple ",
         "on-click": "wofi --show drun -a -w 2",
         "on-click-right": "/home/link/Documents/shortcuts.sh"
     },
@@ -53,28 +35,8 @@
         "tooltip": false
     },
 
-    /* "hyprland/workspaces": {
-        "disable-scroll": true,
-        "all-outputs": true,
-        "on-click": "activate",
-        "format": "{icon}",
-        "format-icons": {
-            "1": " 1",
-            "2": " 2",
-            "3": " 3",
-            "4": " 4",
-            "5": " 5",
-            "6": " 6",
-            "7": "  7",
-            "8": "  8",
-            "9": "  9",
-            "0": "  0",
-            "urgent": "   "
-        }
-    }, */
     "hyprland/workspaces": {
       "format": "{name}",
-      /* "format": "{icon}", */
       "tooltip": false,
       "all-outputs": true, 
       "on-click": "activate",
@@ -93,28 +55,11 @@
     },
 
     /* Modules Center */
-    "custom/media": {
-        "format": "{icon} {}",
-        "return-type": "json",
-        "max-length": 40,
-        "format-icons": {
-            "spotify": "",
-            "default": "🎜"
-        },
-        "escape": true,
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null"
-    },
-
-    "custom/weather": {
-        "exec": "curl 'https://wttr.in/?format=1'",
-        "interval": 3600
-    },
-
     "clock": {
         "format": " {:%A %e %B %Y   %H:%M} |",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "today-format": "<b>{}</b>",
-        "on-click": "gnome-calendar"
+        "on-click": "xdg-open https://calendar.google.com/calendar"
     },
 
     "hyprland/language": {
@@ -122,52 +67,11 @@
         "format-en": "US",
         "format-ru": "RU",
         "max-length": 5,
-        "min-length": 5
+        "min-length": 5,
+        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
     },
 
     /* Modules Right */
-    "idle_inhibitor": {
-        "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        },
-        "tooltip": "true"
-    },
-
-    "cpu": {
-        "interval": "1",
-        "format": "  {max_frequency}GHz <span color=\"darkgray\">| {usage}%</span>",
-        "max-length": 15,
-        "min-length": 15,
-        "on-click": "kitty -e htop --sort-key PERCENT_CPU",
-        "tooltip": false
-    },
-
-    "temperature": {
-        "interval": "4",
-        "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
-        "critical-threshold": 74,
-        "format-critical": "  {temperatureC}°C",
-        "format": "{icon} {temperatureC}°C",
-        "format-icons": ["", "", ""],
-        "max-length": 7,
-        "min-length": 7
-    },
-
-    "memory": {
-        "interval": 30,
-        "format": " {used} Gb",
-        "max-length": 25
-    },
-
-    "disk": {
-        "interval": 30,
-        "format": "󰋊 {free} ",
-        "path": "/",
-        "max-length": 50
-    },
-
     "custom/pacman": {
         "format": "  {}",
         "interval": 3600,
@@ -177,13 +81,6 @@
         "signal": 8,
         "max-length": 10,
         "min-length": 5
-    },
-
-    "custom/themeswitcher": {
-        "format": "",
-        "on-click": "/home/link/Documents/theme_switcher.sh light",
-        "on-click-right": "/home/link/Documents/theme_switcher.sh dark",
-        "tooltip": false
     },
 
     "pulseaudio": {
@@ -227,18 +124,20 @@
         "format-plugged": "  capacity}%",
         "format-alt": "{time} {icon}",
         "format-full": "  {capacity}%",
-        "format-icons": [" ", " ", " "]
+        "format-icons": [" ", " ", " "],
+        "on-click": "kitty --hold upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+
     },
-    
+
     "network": {
         "format-wifi": "  {essid}",
-        "format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
+        "format-ethernet": "󰈀 {ifname}: {ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "",
-        "format-alt": "{ifname}: {ipaddr}/{cidr}",
+        "format-disconnected": "󰌙",
+        "format-alt": "󰈀 {ifname}: {ipaddr}/{cidr}",
         "family": "ipv4",
-        "tooltip-format-wifi": "   {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",
-        "tooltip-format-ethernet": "   {ifname}\nIP: {ipaddr}\n {bandwidthUpBits}  {bandwidthDownBits}",
+        "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",
+        "tooltip-format-ethernet": "󰈀  {ifname}\nIP: {ipaddr}\n {bandwidthUpBits}  {bandwidthDownBits}",
         "on-click-right": "./Documents/wofi_actions/wifi_menu.sh"
     },
 
@@ -247,7 +146,7 @@
     },
 
     "custom/powermenu": {
-		"format": "⏻",
+		"format": "",
         "tooltip": false,
         "on-click": "./Documents/wofi_actions/powermenu.sh"
     }
@@ -255,164 +154,168 @@
 
 {
     "layer": "top",
-    "exclusive": true,
-    "mod": "dock",
-    "passthrough": false,
     "position": "bottom",
-    "fixed-center": true,
-    "ipc": true,
-    "height": 0,
-    "gtk-layer-shell": true,
 
-    "modules-center": [
-        "custom/filemanager",
-        "custom/browser",
-        "custom/mail",
-        "custom/todo",
-        "custom/notes",
-        "custom/rdm",
-        "custom/winbox",
-        "custom/code",
-        "custom/github",
-        "custom/term",
-        "custom/office",
-        "custom/telegram",
-        "custom/whatsapp",
-        "custom/mattermost",
-        "custom/zoom"
+    "modules-left": [
+        "custom/vpn",
+        "custom/currency-usd",
+        "custom/currency-eur",
+        "custom/currency-cny",
+        "custom/currency-btc",
+        "custom/currency-eth",
+        "custom/weather"
+        /* "custom/wireguard" */
     ],
 
-    "custom/left": {
-        "format": " ",
-        "interval": "once",
+    "modules-center": [
+        "custom/media"
+    ],
+
+    "modules-right": [
+        "idle_inhibitor",
+        "custom/themeswitcher",
+        "temperature",
+        "cpu",
+        "memory",
+        "disk"
+    ],
+
+    "custom/weather": {
+        "format": "| {}",
+        "exec": "curl 'https://wttr.in/?format=1'",
+        "interval": 3600,
+        "on-click": "xdg-open https://www.google.com/search?q=%D0%BF%D1%80%D0%BE%D0%B3%D0%BD%D0%BE%D0%B7+%D0%BF%D0%BE%D0%B3%D0%BE%D0%B4%D1%8B"
+    },
+
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
+        },
+        "tooltip": "true"
+    },
+
+    "custom/themeswitcher": {
+        "format": "",
+        "on-click": "/home/link/Documents/theme_switcher.sh light",
+        "on-click-right": "/home/link/Documents/theme_switcher.sh dark",
         "tooltip": false
     },
 
-    "custom/right": {
-        "format": " ",
-        "interval": "once",
+    "cpu": {
+        "interval": "1",
+        "format": "|   {usage}% - {max_frequency}GHz",
+        /* "on-click": "kitty -e htop --sort-key PERCENT_CPU", */
+        "on-click": "kitty -e btop -p 4",
         "tooltip": false
     },
 
+    "temperature": {
+        "interval": "4",
+        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
+        "critical-threshold": 74,
+        "format-critical": "  {temperatureC}°C",
+        "format": "| {icon} {temperatureC}°C",
+        "format-icons": ["", "", ""],
+        "on-click": "kitty --hold zsh -c 'sensors | grep coretemp -A 7'"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": "|  {used} Gb",
+        /* "on-click": "kitty -e htop --sort-key PERCENT_MEM" */
+        "on-click": "kitty -e btop -p 5"
+    },
+
+    "disk": {
+        "interval": 30,
+        "format": "| 󰋊 {free}",
+        "path": "/",
+        "on-click": "kitty --hold -e df -h /home"
+    },
+
+    /* 
     "custom/filemanager": {
-        //"format": "{} <span font='38'>󰉋</span>",
-        "format": "{} ",
+        "format": "󰀶 ",
         "tooltip": true,
         "tooltip-format": "Filemanager",
         "on-click": "nemo"
     },
+    */
 
-    "custom/browser": {
-        //"format": "{} <span font='38'></span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Chrome",
-        "on-click": "google-chrome-stable"
+    "custom/media": {
+        "format": "{icon} {}",
+        "escape": true,
+        "return-type": "json",
+        "max-length": 40,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl stop",
+        "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources/custom_modules folder
     },
 
-    "custom/mail": {
-        //"format": "{} <span font='38'>󰶍</span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Mail",
-        "on-click": "thunderbird"
+    /* "custom/text": {
+        "format": "Think and keep it simple ",
+        "on-click": "wofi --show drun -a -w 2",
+        "on-click-right": "/home/link/Documents/shortcuts.sh"
+    }, */
+
+    /* "custom/wireguard": {
+        "format": "WG {}",
+        "on-click": "kitty -e sudo ./Documents/wofi_actions/connect_wireguard.sh",
+        "on-click-right": "kitty -e ./Documents/wofi_actions/disconnect_wireguard.sh"
+    }, */
+
+    "custom/vpn": {
+        "format": "VPN {icon} ",
+        "tooltip-format": "{icon}",
+        "format-icons": [ "󰌿", "󰍁" ],
+        "exec": "$HOME/.config/waybar/check_wireguard.sh",
+        "on-click": "kitty --hold zsh -c 'sudo ls /etc/wireguard | grep conf$'",
+        /* "exec": "echo '{\"class\": \"connected\"}'", */
+        /* "exec-if": "test -d /proc/sys/net/ipv4/conf/Tstroy", */
+        /* "exec-if": "test -d /proc/sys/net/ipv4/conf/Tstroy || [ -d /proc/sys/net/ipv4/conf/crb ]", */
+        "return-type": "json",
+        "interval": 5
     },
 
-    "custom/todo": {
-        //"format": "{} <span font='38'>󰶍</span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "ToDo",
-        "on-click": "ticktick"
+    "custom/currency-usd": {
+       "format": "|  {}",
+       "exec": "cat $HOME/.config/waybar/currency/USD",
+       "interval": 3600,
+       "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D0%B0"
     },
 
-    "custom/notes": {
-        //"format": "{} <span font='38'>󰶍</span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Notes",
-        "on-click": "obsidian"
+    "custom/currency-eur": {
+       "format": "  {}",
+       "exec": "cat $HOME/.config/waybar/currency/EUR",
+       "interval": 3600,
+       "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B5%D0%B2%D1%80%D0%BE"
+
     },
 
-    "custom/rdm": {
-        //"format": "{} <span font='38'>󰶍</span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Connections",
-        "on-click": "remotedesktopmanager"
+    "custom/currency-cny": {
+       "format": "  {}",
+       "exec": "cat $HOME/.config/waybar/currency/CNY",
+       "interval": 3600,
+       "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D1%8E%D0%B0%D0%BD%D1%8F+%D0%BA+%D1%80%D1%83%D0%B1%D0%BB%D1%8E"
+
     },
 
-    "custom/winbox": {
-        //"format": "{} <span font='38'>󰶍</span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Winbox",
-        "on-click": "winbox"
+    "custom/currency-btc": {
+       "format": "  {}",
+       "exec": "cat $HOME/.config/waybar/crypto-currency/crypto-btc",
+       "interval": 3600,
+       "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B1%D0%B8%D1%82%D0%BA%D0%BE%D0%B8%D0%BD%D0%B0+%D0%BA+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D1%83"
     },
 
-    "custom/code": {
-        //"format": "{} <span font='38'>󰨞</span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Code",
-        "on-click": "code"
-    },
-
-    "custom/github": {
-        //"format": "{} <span font='38'>󰨞</span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "GitHub",
-        "on-click": "github-desktop"
-    },
-
-    "custom/term": {
-        //"format": "{} <span font='28'></span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Terminal",
-        "on-click": "kitty"
-    },
-
-    "custom/office": {
-        //"format": "{} <span font='38'></span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Office",
-        "on-click": "onlyoffice-desktopeditors"
-    },
-
-    "custom/telegram": {
-        //"format": "{} <span font='38'></span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Telegram",
-        "on-click": "telegram-desktop"
-    },
-
-    "custom/whatsapp": {
-        //"format": "{} <span font='38'></span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Whatsapp",
-        "on-click": "whatsdesk"
-    },
-
-    "custom/mattermost": {
-        //"format": "{} <span font='38'></span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Mattermost",
-        "on-click": "mattermost-desktop"
-    },
-
-    "custom/zoom": {
-        //"format": "{} <span font='38'></span>",
-        "format": "{} ",
-        "tooltip": true,
-        "tooltip-format": "Zoom",
-        "on-click": "zoom"
+    "custom/currency-eth": {
+       "format": "  {}",
+       "exec": "cat $HOME/.config/waybar/crypto-currency/crypto-eth",
+       "interval": 3600,
+       "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+ethereum+%D0%BA+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D1%83"
     }
-
-} ]
-
+}]

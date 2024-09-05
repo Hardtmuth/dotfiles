@@ -1,39 +1,38 @@
 #!/bin/bash
 
 msg1=`cat <<_EOF_
-Logout:              󰘳 + M
-Lock:                󰘳 + L
+Logout:               + M
+Lock:                 + ALT + L
 
-Terminal:            󰘳 + RETURN
-Browser:             󰘳 + B
-Files:               󰘳 + E
-Launcher:            󰘳 + SPACE
+Terminal:             + RETURN
+Browser:              + B
+Files:                + E
+Launcher:             + SPACE
 
 Screenshots:
-window:              󰘳 + SHIFT + S
-region:              󰘳 + PRINTSCREEN
-screen:              PRINTSCREEN
+window:               + SHIFT + S
+region:               + PRINT
+screen:              PRINT
 
-Clipboard history:   󰘳 + V
+Clipboard history:    + V
 _EOF_`
 
 msg2=`cat <<_EOF_
-Windows actions:
-Close window:        󰘳 + Q
-Fullscreen:          󰘳 + F
-Float:               󰘳 + T
-Toggle split:        󰘳 + J
-Move window:         󰘳 + 󰳽  
-Resize window:       󰘳 +  󰳽
+Close window:         + Q
+Fullscreen:           + F
+Float:                + T
+Rotate:               + R
 
-Move focus:          󰘳 +  /  /  / 
-Resize:              󰘳 + SHIFT +  /  /  / 
-Swap window:         󰘳 + CTRL +  /  /  / 
+Move window:          + 󰳽  
+Resize window:        +  󰳽
 
-Create group:        󰘳 + G
-Change group active: 󰘳 + ALT +  /
+Move focus:           + 
+Resize:               + SHIFT + 
+Swap window:          + CTRL + 
 
+Create group:         + G
+Change group active:  + ALT + 
 _EOF_`
 
-notify-send "$msg1" -i none;
-notify-send "$msg2" -i none;
+notify-send -h string:bgcolor:#07273b "$msg1" -i none;
+notify-send -h string:bgcolor:#07273b "$msg2" -i none;

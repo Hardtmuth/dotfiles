@@ -13,7 +13,8 @@
 #waybar {
   background-color: @none;
   color: @fg;
-  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free";
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 5";
+  /* font-family: "JetBrains"; */
   font-size: 14px;
   min-height: 0;
   /* font-weight: bold; */
@@ -21,7 +22,7 @@
 
 /* Each module */
 #custom-hostname,
-#workspaces
+#workspaces,
 #window,
 #custom-weather,
 #clock,
@@ -42,9 +43,6 @@
   padding-left: 0.2em;
   padding-right: 0.2em;
 }
-#custom-cliphist {
-  padding: 0 0.7em 0 0.2em;
-}
 
 /* Each module that should blink */
 #memory,
@@ -61,6 +59,8 @@
 #temperature.critical,
 #battery.critical {
   color: @critical;
+  border-bottom: 2px solid @critical;
+  border-radius: 0px;
 }
 
 /* Each critical that should blink */
@@ -77,8 +77,11 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning {
-  background: @warning;
-  color: @bg;
+  /* background: @warning; */
+  /* color: @bg; */
+  color: @warning;
+  border-bottom: 2px solid @warning;
+  border-radius: 0px;
 }
 
 /* Each warning that should blink */
@@ -96,6 +99,7 @@
 #custom-cliphist {
   /* background: @bg; */
   color: @fg;
+  padding: 0 5px;
 }
 
 /* Workspaces stuff */
@@ -125,8 +129,8 @@
 }
 
 #workspaces button.urgent {
-  /* border-color: @critical; */
-  color: @warning;
+  background-color: @warning;
+  color: @bg;
 }
 
 #window {
@@ -141,7 +145,7 @@ window#waybar.empty #window {
 /* Center modules */
 #custom-weather {
   /* background: @bg; */
-  font-weight: bold;
+  /* font-weight: bold; */
   color: @fg;
 }
 
@@ -159,8 +163,7 @@ window#waybar.empty #window {
 #idle_inhibitor {
   /* background: @bg; */
   /*font-size: 1.6em;*/
-  font-weight: bold;
-  padding-right: 0.9em;
+  /* font-weight: bold; */
 }
 
 #cpu {
@@ -188,7 +191,7 @@ window#waybar.empty #window {
 
 #disk {
   /* background: @fg; */
-  font-weight: bold;
+  /* font-weight: bold; */
 }
 
 #custom-pacman {
@@ -249,200 +252,78 @@ window#waybar.empty #window {
 @keyframes blink-warning {
   70% {
     color: @fg;
+    border-bottom: 2px solid @fg;
   }
 
   to {
-    color: @bg;
-    background-color: @warning;
+    color: @warning;
+    border-bottom: 2px solid @warning;
+    /* background-color: @warning; */
   }
 }
 
 @keyframes blink-critical {
   70% {
     color: @fg;
+    border-bottom: 2px solid @fg;
   }
 
   to {
-    color: @bg;
-    background-color: @critical;
+    color: @critical;
+    border-bottom: 2px solid @critical;
+    /* background-color: @critical; */
   }
 }
-#custom-filemanager {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/file-manager.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
+
+/* top bar hover */
+#custom-hostname:hover,
+#custom-cliphist:hover,
+#window:hover,
+#custom-weather:hover,
+#clock:hover,
+#language:hover,
+#idle_inhibitor:hover,
+#cpu:hover,
+#temperature:hover,
+#memory:hover,
+#disk:hover,
+#custom-pacman:hover,
+#custom-themeswitcher:hover,
+#pulseaudio:hover,
+#bluetooth:hover,
+#battery:hover,
+#network:hover,
+#custom-powermenu:hover,
+#custom-vpn:hover,
+#custom-currency-usd:hover,
+#custom-currency-eur:hover,
+#custom-media:hover,
+#custom-currency-cny:hover,
+#custom-currency-btc:hover,
+#custom-currency-eth:hover {
+  color:@bg;
+  background: @fg;
+  opacity: 0.5;
 }
 
-#custom-browser {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/google-chrome.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-mail {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/email.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-todo {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/notes.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-notes {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/opentodolist.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-rdm {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/remote-desktop.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-winbox {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/preferences-system-login.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-code {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/code-oss.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-github {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/github-desktop.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-term {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/Terminal.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-office {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/libreoffice4.2-calc.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-telegram {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/telegram.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-whatsapp {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/whatsapp.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-mattermost {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/slack.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
-}
-
-#custom-zoom {
-  font-size: 1em;
-  background: rgba(255,0, 0, 0.0);
-  background-image: url("/home/link/Documents/icons/BigSur/apps/scalable/Zoom.svg");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: 36px;
-  padding-right: 15px;
-  padding-left: 10px;
-  padding-bottom: 20px;
+/* Bottom bar */
+#custom-vpn,
+#custom-currency-usd,
+#custom-currency-eur,
+#custom-media,
+#custom-wireguard,
+#custom-weather,
+#idle_inhibitor,
+#cpu,
+#temperature,
+#memory,
+#disk,
+#custom-vpn,
+#custom-currency-usd,
+#custom-currency-eur,
+#custom-media,
+#custom-currency-cny,
+#custom-currency-btc,
+#custom-currency-eth {
+  margin-bottom: 0.1em
 }
