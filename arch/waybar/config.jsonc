@@ -1,11 +1,14 @@
 [{
     "layer": "top",
     "position": "top",
+    "output": "DP-1", // for multimonitor setup controlled by script
     "modules-left": [
+        "custom/powermenu",
         "custom/hostname", 
         "custom/cliphist", 
         "hyprland/workspaces", 
-        "hyprland/window"
+        "hyprland/window",
+        "custom/media"
     ],
     "modules-center": [ 
         "clock", 
@@ -16,23 +19,32 @@
         "pulseaudio",
         "bluetooth",
         "battery",
+        "custom/vpn",
         "network",
-        "tray",
-        "custom/powermenu"
+        "tray"
+        /* "custom/sidebar" */
     ],
 
     /* Modules Left */
+    "custom/powermenu": {
+		"format": "󰣇",
+        "tooltip-format": "left-click: power menu\nright-click: system info",
+        "on-click": "./Documents/wofi_actions/powermenu.sh",
+        "on-click-right": "kitty --hold neofetch"
+    },
+
     "custom/hostname": {
-        "format": "󰣇 Think and keep it simple ",
+        "format": "Think and keep it simple ",
+        "tooltip-format": "left-click: app menu \nright-click: shortcuts",
         "on-click": "wofi --show drun -a -w 2",
         "on-click-right": "/home/link/Documents/shortcuts.sh"
     },
 
     "custom/cliphist": {
         "format": "",
+        "tooltip-format": "clipboard history",
         "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
-        "on-click-right": "cliphist wipe",
-        "tooltip": false
+        "on-click-right": "cliphist wipe"
     },
 
     "hyprland/workspaces": {
@@ -48,16 +60,30 @@
       }
     },
 
+    "custom/ ": {
+        "format": "{0} {1}",
+        "escape": true,
+        "return-type": "json",
+        "max-length": 40,
+        "on-click": "playerctl play-pause",
+        "on-click-right": "playerctl stop",
+        "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
+        "on-scroll-up": "playerctl next",
+        "on-scroll-down": "playerctl previous",
+        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources/custom_modules folder
+    },
+
     "hyprland/window": {
         "format": "  {class} ",
-		"separate-outputs": false,
+        "tooltip-format": "open file browser",
+		/* "separate-outputs": false, */
         "on-click": "nemo"
     },
 
     /* Modules Center */
     "clock": {
-        "format": " {:%A %e %B %Y   %H:%M} |",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "format": " {:%a %e %b %Y   %H:%M} |",
+        "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "today-format": "<b>{}</b>",
         "on-click": "xdg-open https://calendar.google.com/calendar"
     },
@@ -129,6 +155,19 @@
 
     },
 
+    "custom/vpn": {
+        "format": "{icon} ",
+        "tooltip-format": "{icon}",
+        "format-icons": [ "󱦚", "󰳌" ],
+        "exec": "$HOME/.config/waybar/check_wireguard.sh",
+        "on-click": "kitty --hold zsh -c 'sudo ls /etc/wireguard | grep conf$'",
+        /* "exec": "echo '{\"class\": \"connected\"}'", */
+        /* "exec-if": "test -d /proc/sys/net/ipv4/conf/Tstroy", */
+        /* "exec-if": "test -d /proc/sys/net/ipv4/conf/Tstroy || [ -d /proc/sys/net/ipv4/conf/crb ]", */
+        "return-type": "json",
+        "interval": 5
+    },
+
     "network": {
         "format-wifi": "  {essid}",
         "format-ethernet": "󰈀 {ifname}: {ipaddr}/{cidr}",
@@ -145,177 +184,14 @@
         "spacing": 5
     },
 
-    "custom/powermenu": {
-		"format": "",
-        "tooltip": false,
-        "on-click": "./Documents/wofi_actions/powermenu.sh"
-    }
-},
-
-{
-    "layer": "top",
-    "position": "bottom",
-
-    "modules-left": [
-        "custom/vpn",
-        "custom/currency-usd",
-        "custom/currency-eur",
-        "custom/currency-cny",
-        "custom/currency-btc",
-        "custom/currency-eth",
-        "custom/weather"
-        /* "custom/wireguard" */
-    ],
-
-    "modules-center": [
-        "custom/media"
-    ],
-
-    "modules-right": [
-        "idle_inhibitor",
-        "custom/themeswitcher",
-        "temperature",
-        "cpu",
-        "memory",
-        "disk"
-    ],
-
-    "custom/weather": {
-        "format": "| {}",
-        "exec": "curl 'https://wttr.in/?format=1'",
-        "interval": 3600,
-        "on-click": "xdg-open https://www.google.com/search?q=%D0%BF%D1%80%D0%BE%D0%B3%D0%BD%D0%BE%D0%B7+%D0%BF%D0%BE%D0%B3%D0%BE%D0%B4%D1%8B"
-    },
-
-    "idle_inhibitor": {
+    "custom/sidebar": {
         "format": "{icon}",
-        "format-icons": {
-            "activated": "",
-            "deactivated": ""
-        },
-        "tooltip": "true"
-    },
-
-    "custom/themeswitcher": {
-        "format": "",
-        "on-click": "/home/link/Documents/theme_switcher.sh light",
-        "on-click-right": "/home/link/Documents/theme_switcher.sh dark",
-        "tooltip": false
-    },
-
-    "cpu": {
-        "interval": "1",
-        "format": "|   {usage}% - {max_frequency}GHz",
-        /* "on-click": "kitty -e htop --sort-key PERCENT_CPU", */
-        "on-click": "kitty -e btop -p 4",
-        "tooltip": false
-    },
-
-    "temperature": {
-        "interval": "4",
-        "hwmon-path": "/sys/class/hwmon/hwmon1/temp1_input",
-        "critical-threshold": 74,
-        "format-critical": "  {temperatureC}°C",
-        "format": "| {icon} {temperatureC}°C",
-        "format-icons": ["", "", ""],
-        "on-click": "kitty --hold zsh -c 'sensors | grep coretemp -A 7'"
-    },
-
-    "memory": {
-        "interval": 30,
-        "format": "|  {used} Gb",
-        /* "on-click": "kitty -e htop --sort-key PERCENT_MEM" */
-        "on-click": "kitty -e btop -p 5"
-    },
-
-    "disk": {
-        "interval": 30,
-        "format": "| 󰋊 {free}",
-        "path": "/",
-        "on-click": "kitty --hold -e df -h /home"
-    },
-
-    /* 
-    "custom/filemanager": {
-        "format": "󰀶 ",
-        "tooltip": true,
-        "tooltip-format": "Filemanager",
-        "on-click": "nemo"
-    },
-    */
-
-    "custom/media": {
-        "format": "{icon} {}",
-        "escape": true,
-        "return-type": "json",
-        "max-length": 40,
-        "on-click": "playerctl play-pause",
-        "on-click-right": "playerctl stop",
-        "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
-        "on-scroll-up": "playerctl next",
-        "on-scroll-down": "playerctl previous",
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources/custom_modules folder
-    },
-
-    /* "custom/text": {
-        "format": "Think and keep it simple ",
-        "on-click": "wofi --show drun -a -w 2",
-        "on-click-right": "/home/link/Documents/shortcuts.sh"
-    }, */
-
-    /* "custom/wireguard": {
-        "format": "WG {}",
-        "on-click": "kitty -e sudo ./Documents/wofi_actions/connect_wireguard.sh",
-        "on-click-right": "kitty -e ./Documents/wofi_actions/disconnect_wireguard.sh"
-    }, */
-
-    "custom/vpn": {
-        "format": "VPN {icon} ",
-        "tooltip-format": "{icon}",
-        "format-icons": [ "󰌿", "󰍁" ],
-        "exec": "$HOME/.config/waybar/check_wireguard.sh",
-        "on-click": "kitty --hold zsh -c 'sudo ls /etc/wireguard | grep conf$'",
-        /* "exec": "echo '{\"class\": \"connected\"}'", */
-        /* "exec-if": "test -d /proc/sys/net/ipv4/conf/Tstroy", */
-        /* "exec-if": "test -d /proc/sys/net/ipv4/conf/Tstroy || [ -d /proc/sys/net/ipv4/conf/crb ]", */
+        "format-icons": [" ", " "],
+        "tooltip": false,
+        "on-click": "eww open sidebar",
+        "on-click-right": "eww kill",
+        "exec": "$HOME/.config/eww/check_bar.sh",
         "return-type": "json",
         "interval": 5
-    },
-
-    "custom/currency-usd": {
-       "format": "|  {}",
-       "exec": "cat $HOME/.config/waybar/currency/USD",
-       "interval": 3600,
-       "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D0%B0"
-    },
-
-    "custom/currency-eur": {
-       "format": "  {}",
-       "exec": "cat $HOME/.config/waybar/currency/EUR",
-       "interval": 3600,
-       "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B5%D0%B2%D1%80%D0%BE"
-
-    },
-
-    "custom/currency-cny": {
-       "format": "  {}",
-       "exec": "cat $HOME/.config/waybar/currency/CNY",
-       "interval": 3600,
-       "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D1%8E%D0%B0%D0%BD%D1%8F+%D0%BA+%D1%80%D1%83%D0%B1%D0%BB%D1%8E"
-
-    },
-
-    "custom/currency-btc": {
-       "format": "  {}",
-       "exec": "cat $HOME/.config/waybar/crypto-currency/crypto-btc",
-       "interval": 3600,
-       "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B1%D0%B8%D1%82%D0%BA%D0%BE%D0%B8%D0%BD%D0%B0+%D0%BA+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D1%83"
-    },
-
-    "custom/currency-eth": {
-       "format": "  {}",
-       "exec": "cat $HOME/.config/waybar/crypto-currency/crypto-eth",
-       "interval": 3600,
-       "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+ethereum+%D0%BA+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D1%83"
     }
 }]

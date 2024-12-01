@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-op=$( echo -e "  Poweroff\n Reboot\n Suspend\n  Lock\n Logout" | wofi -c ~/Documents/wofi_actions/powermenu_wofi_config | awk '{print tolower($2)}' )
+op=$( echo -e "  Poweroff\n Reboot\n Suspend\n  Lock\n Logout" | wofi -c ~/.config/wofi/scripts/powermenu_wofi_config | awk '{print tolower($2)}' )
 
 case $op in 
         poweroff)

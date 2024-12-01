@@ -3,7 +3,7 @@
 # Starts a scan of available broadcasting SSIDs
 # nmcli dev wifi rescan
 
-DIR="$( cd ~/Documents/wofi_actions && pwd )"
+DIR="$( cd ~/.config/wofi/scripts && pwd )"
 
 FIELDS=SSID,SECURITY
 POSITION=0
