@@ -1,7 +1,7 @@
 [{
     "layer": "top",
     "position": "top",
-    "output": "DP-1", // for multimonitor setup controlled by script
+    "output": "eDP-1", //for multimonitor setup, controlled by script
     "modules-left": [
         "custom/powermenu",
         "custom/hostname", 
@@ -11,25 +11,27 @@
         "custom/media"
     ],
     "modules-center": [ 
-        "clock", 
-        "hyprland/language"
+        "clock"
     ],
     "modules-right": [
-        "custom/pacman",
+        // "custom/pacman",
+        "memory",
+        "disk",
+        "hyprland/language",
         "pulseaudio",
         "bluetooth",
+        // "custom/vpn",
         "battery",
-        "custom/vpn",
         "network",
-        "tray"
-        /* "custom/sidebar" */
+        "group/hidden"
+        //"tray"
     ],
 
     /* Modules Left */
     "custom/powermenu": {
 		"format": "󰣇",
         "tooltip-format": "left-click: power menu\nright-click: system info",
-        "on-click": "./Documents/wofi_actions/powermenu.sh",
+        "on-click": "$HOME/.config/wofi/scripts/powermenu.sh",
         "on-click-right": "kitty --hold neofetch"
     },
 
@@ -37,7 +39,7 @@
         "format": "Think and keep it simple ",
         "tooltip-format": "left-click: app menu \nright-click: shortcuts",
         "on-click": "wofi --show drun -a -w 2",
-        "on-click-right": "/home/link/Documents/shortcuts.sh"
+        "on-click-right": "$HOME/.config/waybar/scripts/shortcuts.sh"
     },
 
     "custom/cliphist": {
@@ -60,7 +62,7 @@
       }
     },
 
-    "custom/ ": {
+    "custom/media": {
         "format": "{0} {1}",
         "escape": true,
         "return-type": "json",
@@ -70,19 +72,19 @@
         "smooth-scrolling-threshold": 10, // This value was tested using a trackpad, it should be lowered if using a mouse.
         "on-scroll-up": "playerctl next",
         "on-scroll-down": "playerctl previous",
-        "exec": "$HOME/.config/waybar/mediaplayer.py 2> /dev/null" // Script in resources/custom_modules folder
+        "exec": "$HOME/.config/waybar/scripts/mediaplayer.py 2> /dev/null"
     },
 
     "hyprland/window": {
         "format": "  {class} ",
         "tooltip-format": "open file browser",
 		/* "separate-outputs": false, */
-        "on-click": "nemo"
+        "on-click": "dolphin"
     },
 
     /* Modules Center */
     "clock": {
-        "format": " {:%a %e %b %Y   %H:%M} |",
+        "format": " {:%a %e %b %Y   %H:%M}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "today-format": "<b>{}</b>",
         "on-click": "xdg-open https://calendar.google.com/calendar"
@@ -99,8 +101,10 @@
 
     /* Modules Right */
     "custom/pacman": {
-        "format": "  {}",
+        "format": "{icon}",
         "interval": 3600,
+        "format-icons": ["󰅠 ", " "],
+        "tooltip-format": "system updates",
         "exec": "checkupdates | wc -l",
         "exec-if": "exit 0",
         "on-click": "kitty -e 'yay'; pkill -SIGRTMIN+8 waybar",
@@ -111,8 +115,8 @@
 
     "pulseaudio": {
         "scroll-step": 3,
-        "format": "{icon}  {volume}% {format_source}",
-        "format-bluetooth": "{volume}% {icon} {format_source}",
+        "format": "{icon}  {format_source}", // {volume}%
+        "format-bluetooth": "{icon} {format_source}", // {volume}%
         "format-bluetooth-muted": " {icon} {format_source}",
         "format-muted": " {format_source}",
         "format-source": " ",
@@ -126,7 +130,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol",
+        "on-click": "pavucontrol-qt",
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
     },
 
@@ -142,49 +146,75 @@
 
     "battery": {
         "states": {
-                "warning": 30,
-                "critical": 15
+                "warning": 20,
+                "critical": 10
         },
-        "format": "{icon} {capacity}%",
+        "format": "{icon}", // {capacity}%
         "format-charging": " {capacity}%",
-        "format-plugged": "  capacity}%",
-        "format-alt": "{time} {icon}",
-        "format-full": "  {capacity}%",
+        "format-plugged": " {capacity}%",
+        "format-alt": "{icon} {capacity}% ({time})",
+        "format-full": " {capacity}%",
         "format-icons": [" ", " ", " "],
-        "on-click": "kitty --hold upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+        "on-click-right": "kitty --hold upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 
     },
 
     "custom/vpn": {
         "format": "{icon} ",
         "tooltip-format": "{icon}",
-        "format-icons": [ "󱦚", "󰳌" ],
-        "exec": "$HOME/.config/waybar/check_wireguard.sh",
+        "format-icons": [ "󰡰", "󰒍" ],
+        "exec": "$HOME/.config/waybar/scripts/check_wireguard.sh",
         "on-click": "kitty --hold zsh -c 'sudo ls /etc/wireguard | grep conf$'",
         /* "exec": "echo '{\"class\": \"connected\"}'", */
         /* "exec-if": "test -d /proc/sys/net/ipv4/conf/Tstroy", */
         /* "exec-if": "test -d /proc/sys/net/ipv4/conf/Tstroy || [ -d /proc/sys/net/ipv4/conf/crb ]", */
         "return-type": "json",
-        "interval": 5
+        "interval": 10
     },
 
     "network": {
         "format-wifi": "  {essid}",
         "format-ethernet": "󰈀 {ifname}: {ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP) ",
-        "format-disconnected": "󰌙",
+        "format-disconnected": "󰌙 disconnected",
         "format-alt": "󰈀 {ifname}: {ipaddr}/{cidr}",
         "family": "ipv4",
         "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",
         "tooltip-format-ethernet": "󰈀  {ifname}\nIP: {ipaddr}\n {bandwidthUpBits}  {bandwidthDownBits}",
-        "on-click-right": "./Documents/wofi_actions/wifi_menu.sh"
+        /* "on-click-right": "$HOME/.config/wofi/scripts/wifi_menu.sh" */
+        "on-click-right": "kitty -e nmtui"
+
+    },
+
+    "group/hidden": {
+        "orientation": "horizontal",
+        "modules": [
+            "custom/vpn",
+            "custom/pacman",
+            "tray"
+        ],
+        "drawer": {}
     },
 
     "tray": {
         "spacing": 5
     },
 
-    "custom/sidebar": {
+    "disk": {
+	    "interval": 30,
+	    "format": "  {specific_used:0.2f} Gb ",
+        "path": "/",
+	    "unit": "GB",
+        "on-click": "kitty --hold duf /"
+    },
+
+    "memory": {
+        "interval": 30,
+        "format": " {used:0.1f} Gb ",
+        "on-click": "kitty --hold btop"
+    }
+
+    /* "custom/sidebar": {
         "format": "{icon}",
         "format-icons": [" ", " "],
         "tooltip": false,
@@ -193,5 +223,5 @@
         "exec": "$HOME/.config/eww/check_bar.sh",
         "return-type": "json",
         "interval": 5
-    }
+    } */
 }]

@@ -6,42 +6,53 @@
   border: none;
   border-radius: 3px;
   min-height: 0;
-  margin: 0.1em 0.25em 0 0.25em;
+  margin: 0 0.25em 0 0.25em;
 }
 
 /* The whole bar */
 #waybar {
   background-color: @none;
-  color: @fg;
-  font-family: "JetBrainsMono Nerd Font", "Font Awesome 5";
+  /* background-color: @bgt; */
+  color: @bg;
+  font-family: "JetBrainsMono Nerd Font", "Font Awesome 6";
   /* font-family: "JetBrains"; */
   font-size: 14px;
-  min-height: 0;
-  /* font-weight: bold; */
+  font-weight: bold;
+  border-radius: 0px;
+  /* box-shadow: 4px 4px 2px 1px #101010; */
+  /*  */
 }
 
 /* Each module */
 #custom-hostname,
+#disk,
+#memory,
+#custom-cliphist,
 #workspaces,
 #window,
-#custom-weather,
+/* #custom-weather, */
 #clock,
 #language,
-#idle_inhibitor,
+/* #idle_inhibitor,
 #cpu,
 #temperature,
 #memory,
-#disk,
+#disk, */
 #custom-pacman,
-#custom-themeswitcher,
+/* #custom-themeswitcher, */
 #pulseaudio,
 #bluetooth,
 #battery,
 #network,
 #tray,
+#custom-media,
+/* #custom-wireguard, */
+#custom-vpn,
 #custom-powermenu {
   padding-left: 0.2em;
   padding-right: 0.2em;
+  color: @bg;
+  text-shadow: 1px 1px @fgt;
 }
 
 /* Each module that should blink */
@@ -77,7 +88,7 @@
 #cpu.warning,
 #temperature.warning,
 #battery.warning {
-  /* background: @warning; */
+  background: @fgt;
   /* color: @bg; */
   color: @warning;
   border-bottom: 2px solid @warning;
@@ -93,12 +104,12 @@
 /* Left modules */
 #custom-hostname {
   /* background: @accent; */
-  color: @fg;
+  /* color: @fg; */
 }
 
 #custom-cliphist {
   /* background: @bg; */
-  color: @fg;
+  /* color: @fg; */
   padding: 0 5px;
 }
 
@@ -106,57 +117,63 @@
 
 #workspaces {
   /* background-color: @bg; */
-  color: @fg;
+  /* color: @bg; */
 }
 
 #workspaces button {
   /* background-color: @fg; */
-  color: @fg;
+  color: @bg;
   font-size: 1em;
+  text-shadow: 1px 1px @fgt;
   /* margin: 0.1em 0.1em 0 0.1em; */
   padding:0.2em 0em;
 }
 
 #workspaces button.active {
   /* background-color: @good; */
-  color: @fg;
+  color: @bg;
   /* border-radius: 50px; */
   border-width: 2px;
   border-bottom-style: solid;
   border-radius: 0px;
-  border-color: @fg;
+  border-color: @bg;
+  text-shadow: 1px 1px @fgt;
   /* padding: 0 0.6em; */
 }
 
 #workspaces button.urgent {
   background-color: @warning;
-  color: @bg;
+  /* color: @bg; */
 }
 
 #window {
   /* background-color: @bg; */
-  color: @fg;
+  /* color: @fg; */
 }
 
-window#waybar.empty #window {
+/* window#waybar.empty #window {
   background:none;
-}
+} */
 
 /* Center modules */
 #custom-weather {
   /* background: @bg; */
   /* font-weight: bold; */
-  color: @fg;
+  /* color: @fg; */
 }
 
 #clock {
   /* background: @accent; */
-  color: @fg;
+  /* color: @fg; */
 }
 
 #language {
   /* background: @bg; */
-  color: @fg;
+  /* border-width: 1px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: @fg; */
+  /* color: @fg;  */
 }
 
 /* Right modules */
@@ -168,7 +185,7 @@ window#waybar.empty #window {
 
 #cpu {
   /* background: @bg; */
-  color: @fg;
+  /* color: @fg; */
 }
 
 #cpu.critical {
@@ -178,7 +195,7 @@ window#waybar.empty #window {
 
 #temperature {
   /* background-color: @bg; */
-  color: @fg;
+  /* color: @fg; */
 }
 
 #temperature.critical {
@@ -197,18 +214,18 @@ window#waybar.empty #window {
 #custom-pacman {
   /* background: @good; */
   opacity: 1;
-  color: @fg;
+  /* color: @fg; */
   font-weight: bold;
 }
 
 #custom-themeswitcher {
   /* background: @bg; */
-  color: @fg;
+  /* color: @fg; */
 }
 
 #pulseaudio {
   /* background: @bg; */
-  color: @fg;
+  /* color: @fg; */
 }
 
 #pulseaudio.muted {
@@ -218,24 +235,24 @@ window#waybar.empty #window {
 
 #pulseaudio.source-muted {
   background: @warning;
-  color: @fg;
+  /* color: @fg; */
 }
 
 #bluetooth {
   /* background: @accent; */
-  color: @fg;
+  /* color: @fg; */
   font-size: 1.2em;
   padding-right: 0.5em;
 }
 
 #battery {
   /* background: @bg; */
-  color: @fg;
+  /* color: @fg; */
 }
 
 #network {
   /* background: @bg; */
-  color: @fg;
+  /* color: @fg; */
 }
 
 #tray {
@@ -244,7 +261,7 @@ window#waybar.empty #window {
 
 #custom-powermenu {
   /* background: @warning; */
-  color: @fg;
+  /* color: @fg; */
   padding-right: 0.5em;
 }
 
@@ -301,13 +318,14 @@ window#waybar.empty #window {
 #custom-currency-cny:hover,
 #custom-currency-btc:hover,
 #custom-currency-eth:hover {
-  color:@bg;
-  background: @fg;
+  color:@fg;
+  background: @bg;
   opacity: 0.5;
+  text-shadow: 1px 1px @bg;
 }
 
 /* Bottom bar */
-#custom-vpn,
+/* #custom-vpn,
 #custom-currency-usd,
 #custom-currency-eur,
 #custom-media,
@@ -318,12 +336,8 @@ window#waybar.empty #window {
 #temperature,
 #memory,
 #disk,
-#custom-vpn,
-#custom-currency-usd,
-#custom-currency-eur,
-#custom-media,
 #custom-currency-cny,
 #custom-currency-btc,
 #custom-currency-eth {
   margin-bottom: 0.1em
-}
+} */

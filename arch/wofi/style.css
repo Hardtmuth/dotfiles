@@ -4,6 +4,10 @@
 * {
   color: @fg;
   background: transparent;
+  font-family: "VictorMono NF";
+  font-size: 14px;
+  min-height: 0;
+  font-weight: bold;
 }
 
 #window {

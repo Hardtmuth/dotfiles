@@ -106,14 +106,14 @@
 
     "custom/currency-usd": {
        "format": "|  {}",
-       "exec": "cat $HOME/.config/waybar/currency/USD",
+       "exec": "cat $HOME/.config/waybar/scripts/currency/USD",
        "interval": 3600,
        "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D0%B0"
     },
 
     "custom/currency-eur": {
        "format": "  {}",
-       "exec": "cat $HOME/.config/waybar/currency/EUR",
+       "exec": "cat $HOME/.config/waybar/scripts/currency/EUR",
        "interval": 3600,
        "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B5%D0%B2%D1%80%D0%BE"
 
@@ -121,7 +121,7 @@
 
     "custom/currency-cny": {
        "format": "  {}",
-       "exec": "cat $HOME/.config/waybar/currency/CNY",
+       "exec": "cat $HOME/.config/waybar/scripts/currency/CNY",
        "interval": 3600,
        "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D1%8E%D0%B0%D0%BD%D1%8F+%D0%BA+%D1%80%D1%83%D0%B1%D0%BB%D1%8E"
 
@@ -129,14 +129,14 @@
 
     "custom/currency-btc": {
        "format": "  {}",
-       "exec": "cat $HOME/.config/waybar/crypto-currency/crypto-btc",
+       "exec": "cat $HOME/.config/waybar/scripts/crypto-currency/crypto-btc",
        "interval": 3600,
        "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+%D0%B1%D0%B8%D1%82%D0%BA%D0%BE%D0%B8%D0%BD%D0%B0+%D0%BA+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D1%83"
     },
 
     "custom/currency-eth": {
        "format": "  {}",
-       "exec": "cat $HOME/.config/waybar/crypto-currency/crypto-eth",
+       "exec": "cat $HOME/.config/waybar/scripts/crypto-currency/crypto-eth",
        "interval": 3600,
        "on-click": "xdg-open https://www.google.com/search?q=%D0%BA%D1%83%D1%80%D1%81+ethereum+%D0%BA+%D0%B4%D0%BE%D0%BB%D0%BB%D0%B0%D1%80%D1%83"
     }

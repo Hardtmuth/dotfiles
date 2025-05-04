@@ -1,6 +1,8 @@
-@define-color bg #07273b;
-/* @define-color bg #223441; */
+/* @define-color bg #07273b; */
+@define-color bg #1E2931;
+@define-color bgt rgba(7, 39, 59, 0.7);
 @define-color fg #C6CDD2;
+@define-color fgt rgba(198, 205, 210, 0.7);
 @define-color warning #DDB988;
 @define-color critical #BF616A;
 @define-color good #3f8d6c;
