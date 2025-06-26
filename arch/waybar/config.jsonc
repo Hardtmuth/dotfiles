@@ -1,7 +1,8 @@
 [{
     "layer": "top",
     "position": "top",
-    "output": "eDP-1", //for multimonitor setup, controlled by script
+    /* "output": "HDMI-A-1", */
+    "output": "HDMI-A-1", //for multimonitor setup, controlled by script
     "modules-left": [
         "custom/powermenu",
         "custom/hostname", 
@@ -11,59 +12,81 @@
         "custom/media"
     ],
     "modules-center": [ 
-        "clock"
+        
     ],
     "modules-right": [
         // "custom/pacman",
         "memory",
         "disk",
-        "hyprland/language",
+        "custom/divider",
+        "network",
+        "custom/divider",
+        
         "pulseaudio",
         "bluetooth",
         // "custom/vpn",
         "battery",
-        "network",
-        "group/hidden"
+        
+        //"custom/vpn",
+        "custom/divider",
+        "hyprland/language",
+        "custom/divider",
+        "clock"
+        //"group/hidden"
         //"tray"
     ],
+
+    "custom/divider": {
+		"format": "|"
+    },
 
     /* Modules Left */
     "custom/powermenu": {
 		"format": "󰣇",
         "tooltip-format": "left-click: power menu\nright-click: system info",
-        "on-click": "$HOME/.config/wofi/scripts/powermenu.sh",
-        "on-click-right": "kitty --hold neofetch"
+        "on-click": "~/.config/rofi/powermenu/type-1/powermenu.sh",
+        "on-click-right": "kitty --hold fastfetch"
     },
 
     "custom/hostname": {
         "format": "Think and keep it simple ",
         "tooltip-format": "left-click: app menu \nright-click: shortcuts",
-        "on-click": "wofi --show drun -a -w 2",
+        "on-click": "~/.config/rofi/launchers/type-1/launcher.sh",
         "on-click-right": "$HOME/.config/waybar/scripts/shortcuts.sh"
     },
 
     "custom/cliphist": {
         "format": "",
         "tooltip-format": "clipboard history",
-        "on-click": "cliphist list | wofi --dmenu | cliphist decode | wl-copy",
+        "on-click": "cliphist list | rofi -dmenu -theme ~/.config/rofi/colors/Untitled-link | cliphist decode | wl-copy",
         "on-click-right": "cliphist wipe"
     },
 
     "hyprland/workspaces": {
-      "format": "{name}",
+      "format": "{icon}",
+      "format-icons": {
+		    "1": "󰌀",
+		    "2": "󰇰",
+		    "3": "󱅰",
+		    "4": "󰢹",
+            "5": "󰌘",
+            "6": "󰎳",
+            "7": "󰎶",
+            "8": "󰎹",
+            "9": "󰂺",
+            "10": "",
+		    //"active": "",
+		    "default": "{name}",
+            "urgent": "  "
+	    },
       "tooltip": false,
       "all-outputs": true, 
       "on-click": "activate",
-      "disable-scroll": true,
-      "format-icons": {
-        "active": "🟢",
-        "default": "🟩",
-        "urgent": "  "
-      }
+      "disable-scroll": true
     },
 
     "custom/media": {
-        "format": "{0} {1}",
+        "format": "{0}",
         "escape": true,
         "return-type": "json",
         "max-length": 40,
@@ -76,26 +99,41 @@
     },
 
     "hyprland/window": {
-        "format": "  {class} ",
-        "tooltip-format": "open file browser",
-		/* "separate-outputs": false, */
-        "on-click": "dolphin"
+        "format": "{class} | {title}",
+        "icon": false,
+        "icon-size": 16,
+        "tooltip-format": "{class}",
+		"separate-outputs": false
+        // "on-click": "dolphin"
     },
 
     /* Modules Center */
     "clock": {
-        "format": " {:%a %e %b %Y   %H:%M}",
+        "format": "{:%a %e %b %Y  %H:%M}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
-        "today-format": "<b>{}</b>",
-        "on-click": "xdg-open https://calendar.google.com/calendar"
+        "on-click": "xdg-open https://calendar.google.com/calendar && hyprctl dispatch focusurgentorlast",
+        "calendar": {
+            //"mode-mon-col"  : 3,
+            "mode"          : "month",
+		    //"weeks-pos"     : "right",
+		    //"on-scroll"     : 1,
+		    //"on-click-right": "mode",
+		    "format": {
+		        "months":     "<span color='#ffead3'><b>{}</b></span>",
+			    "days":       "<span color='#ecc6d9'><b>{}</b></span>",
+			    "weeks":      "<span color='#99ffdd'><b>W{}</b></span>",
+			    "weekdays":   "<span color='#ffcc66'><b>{}</b></span>",
+			    "today":      "<span color='#ff6699'><b><u>{}</u></b></span>"
+		    }
+        }   
     },
 
     "hyprland/language": {
-        "format": " {}",
-        "format-en": "US",
-        "format-ru": "RU",
-        "max-length": 5,
-        "min-length": 5,
+        "format": "{}",
+        "format-en": "  US",
+        "format-ru": "  RU",
+        "max-length": 7,
+        "min-length": 7,
         "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
     },
 
@@ -115,16 +153,16 @@
 
     "pulseaudio": {
         "scroll-step": 3,
-        "format": "{icon}  {format_source}", // {volume}%
-        "format-bluetooth": "{icon} {format_source}", // {volume}%
-        "format-bluetooth-muted": " {icon} {format_source}",
+        "format": "{icon} {format_source}", // {volume}%
+        "format-bluetooth": "{icon}  {format_source}", // {volume}%
+        "format-bluetooth-muted": " {icon}  {format_source}",
         "format-muted": " {format_source}",
         "format-source": " ",
         "format-source-muted": " ",
         "format-icons": {
             "headphone": "",
-            "hands-free": "",
-            "headset": "",
+            "hands-free": "",
+            "headset": "",
             "phone": "",
             "portable": "",
             "car": "",
@@ -149,20 +187,23 @@
                 "warning": 20,
                 "critical": 10
         },
-        "format": "{icon}", // {capacity}%
-        "format-charging": " {capacity}%",
+        "format": "{icon} {capacity}%",
+        //"format-charging": "󰂄 {capacity}%",
         "format-plugged": " {capacity}%",
         "format-alt": "{icon} {capacity}% ({time})",
+        //"format-full": "󰁹 {capacity}%",
+        //"format-icons": ["󰁺", "󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
+        "format-charging": "󱐋 {capacity}%",
         "format-full": " {capacity}%",
-        "format-icons": [" ", " ", " "],
+        "format-icons": ["", "", "", "", "", ""],
         "on-click-right": "kitty --hold upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 
     },
 
     "custom/vpn": {
         "format": "{icon} ",
-        "tooltip-format": "{icon}",
-        "format-icons": [ "󰡰", "󰒍" ],
+        "tooltip-format": "wireguard config list",
+        "format-icons": [ "󱦚", "󰳌" ],
         "exec": "$HOME/.config/waybar/scripts/check_wireguard.sh",
         "on-click": "kitty --hold zsh -c 'sudo ls /etc/wireguard | grep conf$'",
         /* "exec": "echo '{\"class\": \"connected\"}'", */
@@ -173,11 +214,13 @@
     },
 
     "network": {
-        "format-wifi": "  {essid}",
-        "format-ethernet": "󰈀 {ifname}: {ipaddr}/{cidr}",
+        //"format-wifi": " {essid}",
+        "format-wifi": " {essid} | 󰈀 {ifname}: {ipaddr}",
+        "format-ethernet": "󰈀 {ifname}: {ipaddr}",
+        //"format-ethernet": "󰈀 {ifname}: {ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "󰌙 disconnected",
-        "format-alt": "󰈀 {ifname}: {ipaddr}/{cidr}",
+        "format-alt": "󰈀 {ifname}: {ipaddr}",
         "family": "ipv4",
         "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",
         "tooltip-format-ethernet": "󰈀  {ifname}\nIP: {ipaddr}\n {bandwidthUpBits}  {bandwidthDownBits}",
@@ -189,7 +232,6 @@
     "group/hidden": {
         "orientation": "horizontal",
         "modules": [
-            "custom/vpn",
             "custom/pacman",
             "tray"
         ],
@@ -210,7 +252,7 @@
 
     "memory": {
         "interval": 30,
-        "format": " {used:0.1f} Gb ",
+        "format": "  {used:0.1f} Gb ",
         "on-click": "kitty --hold btop"
     }
 

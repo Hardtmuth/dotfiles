@@ -1,0 +1,27 @@
+[mgr]
+ratio = [1, 4, 3]
+show_hidden = false
+sort_by = "alphabetical"
+sort_dir_first = true
+linemode = "size"
+
+[opener]
+edit = [
+	{ run = 'codium "$@"', block = true, for = "unix" },
+]
+open = [
+	{ run = 'xdg-open "$@"', desc = "Open" },
+]
+img = [
+	{ run = 'swayimg "$@"', desc = "img" },
+]
+
+[open]
+prepend_rules = [
+	{ name = "*.json", use = "edit" },
+
+	# Multiple openers for a single rule
+	{ name = "*.html", use = [ "open", "edit" ] },
+
+    { name = "*.jpg", use = "img" },
+]
