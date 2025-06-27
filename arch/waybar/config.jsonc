@@ -29,7 +29,8 @@
         
         //"custom/vpn",
         "custom/divider",
-        "hyprland/language",
+        //"hyprland/language",
+        "custom/kb-layout",
         "custom/divider",
         "clock"
         //"group/hidden"
@@ -134,7 +135,14 @@
         "format-ru": "  RU",
         "max-length": 7,
         "min-length": 7,
-        "on-click": "hyprctl switchxkblayout at-translated-set-2-keyboard next"
+        //"keyboard-name": "thinkpad-extra-buttons"
+        "on-click": "hyprctl switchxkblayout thinkpad-extra-buttons next"
+    },
+
+    "custom/kb-layout": {
+        "format": "  {}",
+        "exec": "~/.config/waybar/scripts/kb-layout.sh",
+        "interval": 1
     },
 
     /* Modules Right */
