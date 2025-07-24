@@ -21,7 +21,9 @@
 }
 
 /* Each module */
+#custom-pomodoro,
 #custom-hostname,
+#custom-kb-layout,
 #disk,
 #memory,
 #custom-cliphist,
@@ -183,8 +185,10 @@
 }
 
 /* top bar hover */
+#custom-pomodoro:hover,
 #custom-hostname:hover,
 #custom-cliphist:hover,
+#custom-kb-layout:hover,
 #window:hover,
 #custom-weather:hover,
 #clock:hover,
@@ -212,4 +216,22 @@
   background: @fgt;
   opacity: 0.5;
   text-shadow: 1px 1px @fgt;
+}
+
+#custom-pomodoro.pomodoro {
+  color: @warning;
+  border-bottom: 2px solid @warning;
+}
+
+#custom-pomodoro.short-break {
+  color: @good;
+}
+
+#custom-pomodoro.long-break {
+  color: @good;
+}
+
+#custom-pomodoro.paused {
+  color: @accent;
+  font-style: italic;
 }

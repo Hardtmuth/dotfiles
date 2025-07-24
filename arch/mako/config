@@ -12,6 +12,7 @@ max-icon-size=64
 default-timeout=5000
 ignore-timeout=1
 font=JetBrainsJetBrainsMono Nerd Font 10
+on-notify=exec mpv $HOME/.config/mako/sounds/classy.mp3
 
 [urgency=low]
 border-color=#C6CDD2
