@@ -39,6 +39,7 @@
 #tray,
 #custom-media,
 #custom-vpn,
+#custom-usb,
 #custom-powermenu {
   padding-left: 0.2em;
   padding-right: 0.2em;
@@ -174,12 +175,14 @@
   70% {
     color: @fg;
     border-bottom: 2px solid @fg;
+    border-radius: 0px;
     background-color: @none;
   }
 
   to {
     color: @warning;
     border-bottom: 2px solid @warning;
+    border-radius: 0px;
     background-color: @none;
   }
 }
@@ -189,12 +192,14 @@
     color: @fgt;
     border-bottom: 2px solid @fgt;
     background-color: @none;
+    border-radius: 0px;
   }
 
   to {
     color: @good;
     border-bottom: 2px solid @good;
     background-color: @none;
+    border-radius: 0px;
   }
 }
 
@@ -202,12 +207,14 @@
   70% {
     color: @fg;
     border-bottom: 2px solid @fg;
+    border-radius: 0px;
     background-color: @none;
   }
 
   to {
     color: @critical;
     border-bottom: 2px solid @critical;
+    border-radius: 0px;
     background-color: @none;
   }
 }
@@ -235,6 +242,7 @@
 #network:hover,
 #custom-powermenu:hover,
 #custom-vpn:hover,
+#custom-usb:hover,
 #custom-currency-usd:hover,
 #custom-currency-eur:hover,
 #custom-media:hover,
