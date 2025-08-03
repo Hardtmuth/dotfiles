@@ -2,7 +2,7 @@
     "layer": "top",
     "position": "top",
     /* "output": "HDMI-A-1", */
-    "output": "DP-2", //for multimonitor setup, controlled by script
+    "output": "eDP-1", //for multimonitor setup, controlled by script
     "modules-left": [
         "custom/powermenu",
         "custom/hostname", 
@@ -11,37 +11,36 @@
         "hyprland/window",
         "custom/media"
     ],
-    "modules-center": [ 
-        
+    "modules-center": [
     ],
     "modules-right": [
-        "custom/divider",
-        // "custom/pacman",
-        "custom/pomodoro",
+        //"custom/divider",
+        //"tray",
+        
         "custom/divider",
         "memory",
         "disk",
-        "custom/divider",
+        //"custom/divider",
+        "custom/vpn",
         "network",
-        "custom/divider",
-        
-        "pulseaudio",
-        "bluetooth",
+        //"custom/divider",
         // "custom/vpn",
         "battery",
-        
-        //"custom/vpn",
-        "custom/divider",
-        //"hyprland/language",
-        "custom/kb-layout",
-        "custom/divider",
+        //"custom/divider",
+        "custom/pacman",
+        "custom/pomodoro",
+        "pulseaudio",
+        "bluetooth",
+        //"custom/divider",
+        "hyprland/language",
+        //"custom/kb-layout",
+        //"custom/divider",
         "clock"
         //"group/hidden"
-        //"tray"
     ],
 
     "custom/divider": {
-		"format": "|"
+		"format": " "
     },
 
     /* Modules Left */
@@ -62,7 +61,7 @@
     "custom/cliphist": {
         "format": "",
         "tooltip-format": "clipboard history",
-        "on-click": "cliphist list | rofi -dmenu -theme ~/.config/rofi/colors/Untitled-link | cliphist decode | wl-copy",
+        "on-click": "cliphist list | rofi -dmenu | cliphist decode | wl-copy",
         "on-click-right": "cliphist wipe"
     },
 
@@ -103,7 +102,7 @@
     },
 
     "hyprland/window": {
-        "format": "{class} | {title}",
+        "format": "{title}",
         "icon": false,
         "icon-size": 16,
         "tooltip-format": "{class}",
@@ -113,7 +112,7 @@
 
     /* Modules Center */
     "clock": {
-        "format": "{:%a %e %b %Y  %H:%M}",
+        "format": "󰸗 {:%a %e %b %Y   %H:%M}",
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "on-click": "xdg-open https://calendar.google.com/calendar && hyprctl dispatch focusurgentorlast",
         "calendar": {
@@ -134,40 +133,46 @@
 
     "hyprland/language": {
         "format": "{}",
-        "format-en": "  US",
-        "format-ru": "  RU",
+        "format-en": " US",
+        "format-ru": " RU",
         "max-length": 7,
         "min-length": 7,
         //"keyboard-name": "thinkpad-extra-buttons"
         "on-click": "hyprctl switchxkblayout thinkpad-extra-buttons next"
     },
 
-    "custom/kb-layout": {
-        "format": "  {}",
-        "exec": "~/.config/waybar/scripts/kb-layout.sh",
-        "interval": 1
-    },
-
     /* Modules Right */
-    "custom/pacman": {
-        "format": "{icon}",
+    /* Эcustom/pacman": {
+        "format": "{icon} {text}",
         "interval": 3600,
-        "format-icons": ["󰅠 ", " "],
+        "format-icons": ["", "󰅠"],
         "tooltip-format": "system updates",
-        "exec": "checkupdates | wc -l",
+        "exec": "~/.config/waybar/scripts/checkupdates.sh",
         "exec-if": "exit 0",
         "on-click": "kitty -e 'yay'; pkill -SIGRTMIN+8 waybar",
         "signal": 8,
-        "max-length": 10,
-        "min-length": 5
+        "min-length": 2
+    }, */
+
+    "custom/pacman": {
+        "format": "{alt}  {percentage}",
+        "interval": 3600,
+        "tooltip-format": "system updates",
+        "exec": "~/.config/waybar/scripts/checkupdates.sh",
+        "exec-if": "exit 0",
+        "on-click": "kitty -e 'yay'; pkill -SIGRTMIN+8 waybar",
+        "signal": 8,
+        "min-length": 2,
+        "return-type": "json"
     },
+
 
     "pulseaudio": {
         "scroll-step": 3,
         "format": "{icon} {format_source}", // {volume}%
         "format-bluetooth": "{icon}  {format_source}", // {volume}%
         "format-bluetooth-muted": " {icon}  {format_source}",
-        "format-muted": " {format_source}",
+        "format-muted": "󰖁 {format_source}",
         "format-source": " ",
         "format-source-muted": " ",
         "format-icons": {
@@ -198,23 +203,58 @@
                 "warning": 20,
                 "critical": 10
         },
-        "format": "{icon} {capacity}%",
+        "format": "[{icon}]o {capacity}%",
         //"format-charging": "󰂄 {capacity}%",
-        "format-plugged": " {capacity}%",
+        "format-plugged": "[{icon}] {capacity}%",
         "format-alt": "{icon} {capacity}% ({time})",
         //"format-full": "󰁹 {capacity}%",
         //"format-icons": ["󰁺", "󰁻", "󰁽", "󰁿", "󰂁", "󰁹"],
-        "format-charging": "󱐋 {capacity}%",
-        "format-full": " {capacity}%",
-        "format-icons": ["", "", "", "", "", ""],
+        "format-charging": "[{icon}]󱐋 {capacity}%",
+        "format-full": "[{icon}]󱐋 {capacity}%",
+        //"format-icons": ["", "", "", "", "", ""],
+        /* "format-icons": [
+            "00........",
+            "0000......",
+            "000000....",
+            "00000000..",
+            "0000000000"
+        ], */
+        /* "format-icons": [
+            "██░░░░░░░░",
+            "████░░░░░░",
+            "██████░░░░",
+            "████████░░",
+            "██████████"
+        ], */
+        /* "format-icons": [
+            "||........",
+            "||||......",
+            "||||||....",
+            "||||||||..",
+            "||||||||||"
+        ], */
+        /* "format-icons": [
+            ".........",
+            ">>>>......",
+            ">>>>>>....",
+            ">>>>>>>>..",
+            ">>>>>>>>>>",
+        ], */
+        "format-icons": [
+            "..........",
+            "........",
+            "......",
+            "....",
+            "..",
+            ""
+        ],
         "on-click-right": "kitty --hold upower -i /org/freedesktop/UPower/devices/battery_BAT0"
 
     },
 
     "custom/vpn": {
-        "format": "{icon} ",
+        "format": "{alt} {text}",
         "tooltip-format": "wireguard config list",
-        "format-icons": [ "󱦚", "󰳌" ],
         "exec": "$HOME/.config/waybar/scripts/check_wireguard.sh",
         "on-click": "kitty --hold zsh -c 'sudo ls /etc/wireguard | grep conf$'",
         /* "exec": "echo '{\"class\": \"connected\"}'", */
@@ -226,7 +266,7 @@
 
     "network": {
         //"format-wifi": " {essid}",
-        "format-wifi": " {essid} | 󰈀 {ifname}: {ipaddr}",
+        "format-wifi": " {essid}  󰈀 {ifname}: {ipaddr}",
         "format-ethernet": "󰈀 {ifname}: {ipaddr}",
         //"format-ethernet": "󰈀 {ifname}: {ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP) ",
@@ -255,7 +295,7 @@
 
     "disk": {
 	    "interval": 30,
-	    "format": "  {specific_used:0.2f} Gb ",
+	    "format": " {specific_used:0.2f} Gb",
         "path": "/",
 	    "unit": "GB",
         "on-click": "kitty --hold duf /"

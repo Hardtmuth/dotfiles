@@ -80,7 +80,7 @@ def output_for_waybar(state):
     pomodoros = state["pomodoros"]
     
     if status == "inactive":
-        text = "󰔛 timer"
+        text = "󰔛"
         tooltip = "Click to start a pomodoro"
     elif status == "pomodoro":
         text = f"󰔟 {format_time(state['time_left'])}"

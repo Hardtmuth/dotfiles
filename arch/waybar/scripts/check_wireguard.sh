@@ -1,7 +1,8 @@
 #!/bin/bash
+connection_status=$(wg show | grep -oP 'interface:\s+\K\w+')
 
-test -d /proc/sys/net/ipv4/conf/Tstroy || [ -d /proc/sys/net/ipv4/conf/crb ] \
-&& echo '{"text":"Connected","class":"connected","percentage":100}' \
-|| echo '{"text":"Disconnected","class":"disconnected","percentage":0}'
-
-
+if [[ -n "$connection_status" ]]; then
+    echo "{\"text\":\"$connection_status\", \"alt\":\"󰖂\", \"class\":\"connected\" }"
+else
+    echo "{\"text\":\"\", \"alt\":\"\", \"class\":\"disconnected\" }"
+fi

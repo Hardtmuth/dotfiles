@@ -14,7 +14,8 @@
   background-color: @none;
   /* background-color: @bgt; */
   color: @fgt;
-  font-family: "Iosevka", "Font Awesome 6";
+  font-family: "Iosevka ", "Font Awesome 6";
+  /*font-family: "JetBrainsMono NF", "Font Awesome 6";*/
   font-size: 14px;
   font-weight: bold;
   border-radius: 0px;
@@ -23,7 +24,6 @@
 /* Each module */
 #custom-pomodoro,
 #custom-hostname,
-#custom-kb-layout,
 #disk,
 #memory,
 #custom-cliphist,
@@ -63,6 +63,7 @@
   color: @critical;
   border-bottom: 2px solid @critical;
   border-radius: 0px;
+  animation-name: blink-critical;
 }
 
 /* Each critical that should blink */
@@ -84,29 +85,39 @@
   color: @warning;
   border-bottom: 2px solid @warning;
   border-radius: 0px;
+  animation-name: blink-warning;
 }
 
 /* Each warning that should blink */
+#battery.warning {
+  animation-name: blink-warning;
+  animation-duration: 3s;
+}
+
+#battery.charging {
+  animation-name: blink-charging;
+  animation-duration: 10s;
+  /* border-bottom: 2px solid @good; */
+}
+
 #battery.warning.discharging {
   animation-name: blink-warning;
   animation-duration: 3s;
 }
 
 /* Left modules */
-#custom-cliphist {
-  /* background: @bg; */
-  /* color: @fg; */
+/* #custom-cliphist {
+  background: @bg;
+  color: @fg;
   padding: 0 5px;
-}
+} */
 
 /* Workspaces stuff */
 #workspaces button {
-  /* background-color: @fg; */
   color: @fgt;
   font-size: 1em;
   text-shadow: 1px 1px @bgt;
-  /* text-shadow: 1px 1px @bgt; */
-  /* margin: 0.1em 0.1em 0 0.1em; */
+  margin: 0.1em 0.1em 0 0.1em;
   padding:0.2em 0em;
 }
 
@@ -136,24 +147,27 @@
   background:  @critical;
 }
 
-#custom-pacman {
+/* #custom-pacman {
   opacity: 1;
   font-weight: bold;
-}
+} */
 
 #pulseaudio.muted {
-  background: @critical;
-  color: @critical;
+  background-color: @none;
+  border-bottom: 2px solid @warning;
+  color: @warning;
 }
 
 #pulseaudio.source-muted {
-  background: @warning;
+  background-color: @none;
+  border-bottom: 2px solid @warning;
+  color: @warning;
 }
 
-#bluetooth {
+/* #bluetooth {
   font-size: 1.2em;
   padding-right: 0.5em;
-}
+} */
 
 /* Blinking */
 @keyframes blink-warning {
@@ -166,6 +180,20 @@
   to {
     color: @warning;
     border-bottom: 2px solid @warning;
+    background-color: @none;
+  }
+}
+
+@keyframes blink-charging {
+  70% {
+    color: @fgt;
+    border-bottom: 2px solid @fgt;
+    background-color: @none;
+  }
+
+  to {
+    color: @good;
+    border-bottom: 2px solid @good;
     background-color: @none;
   }
 }
@@ -185,6 +213,7 @@
 }
 
 /* top bar hover */
+#workspaces button:hover,
 #custom-pomodoro:hover,
 #custom-hostname:hover,
 #custom-cliphist:hover,
@@ -221,17 +250,36 @@
 #custom-pomodoro.pomodoro {
   color: @warning;
   border-bottom: 2px solid @warning;
+  border-radius: 0px;
 }
 
-#custom-pomodoro.short-break {
+#custom-pomodoro.short_break {
   color: @good;
+  border-bottom: 2px solid @good;
+  border-radius: 0px;
 }
 
-#custom-pomodoro.long-break {
+#custom-pomodoro.long_break {
   color: @good;
+  border-bottom: 2px solid @good;
+  border-radius: 0px;
 }
 
 #custom-pomodoro.paused {
   color: @accent;
+  border-bottom: 2px solid @accent;
   font-style: italic;
+  border-radius: 0px;
+}
+
+#custom-pacman.available {
+  color: @good;
+  border-bottom: 2px solid @good;
+  border-radius: 0px;
+}
+
+#custom-vpn.connected {
+  color: @good;
+  border-bottom: 2px solid @good;
+  border-radius: 0px;
 }
