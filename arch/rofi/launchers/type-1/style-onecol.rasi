@@ -155,8 +155,8 @@ case-indicator {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     2;
-    lines:                       10;
+    columns:                     1;
+    lines:                       11;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
