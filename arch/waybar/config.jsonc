@@ -343,11 +343,11 @@
     "custom/smb": {
 	    "interval": 10,
 	    "exec": "$HOME/.config/waybar/scripts/smb.sh",
-        "on-click": "kitty --hold yazi /mnt/office-nas",
-        "on-click-right": "kitty sudo mount -t cifs //10.0.1.29/obmen /mnt/office-nas -o username=aa",
-        "on-click-middle": "kitty sudo umount //10.0.1.29/obmen",
+        "on-click": "~/.config/rofi/launchers/type-1/smb.sh",
+        "on-click-right": "kitty --hold yazi /mnt",
+        "on-click-middle": "$HOME/.config/waybar/scripts/disconnect_smb.sh",
         "format": "{alt}",
-        "tooltip-format": "right click: connect to office nas\n\nmiddle click: disconnect\n\nleft click: open mount directory",
+        "tooltip-format": "click: open connect menu\n\nmiddle click: disconnect\n\nright click: open mount directory",
         "return-type": "json"
     }
 }]
