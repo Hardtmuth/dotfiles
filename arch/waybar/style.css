@@ -13,7 +13,7 @@
 #waybar {
   background-color: @none;
   /* background-color: @bgt; */
-  color: @fgt;
+  color: @bgt;
   font-family: "Iosevka ", "Font Awesome 6";
   /*font-family: "JetBrainsMono NF", "Font Awesome 6";*/
   font-size: 14px;
@@ -30,6 +30,8 @@
 #workspaces,
 #window,
 #clock,
+#temperature,
+#cpu,
 #language,
 #custom-pacman,
 #pulseaudio,
@@ -44,8 +46,8 @@
 #custom-powermenu {
   padding-left: 0.2em;
   padding-right: 0.2em;
-  color: @fgt;
-  text-shadow: 1px 1px @bgt;
+  color: @bgt;
+  text-shadow: 1px 1px @fgt;
 }
 
 /* Each module that should blink */
@@ -116,28 +118,28 @@
 
 /* Workspaces stuff */
 #workspaces button {
-  color: @fgt;
+  color: @bgt;
   font-size: 1em;
-  text-shadow: 1px 1px @bgt;
+  text-shadow: 1px 1px @fgt;
   margin: 0.1em 0.1em 0 0.1em;
   padding:0.2em 0em;
 }
 
 #workspaces button.active {
   /* background-color: @good; */
-  color: @fgt;
+  color: @bgt;
   /* border-radius: 50px; */
   border-width: 2px;
   border-bottom-style: solid;
   border-radius: 0px;
-  border-color: @fgt;
+  border-color: @bgt;
  /*  text-shadow: 1px 1px @fgt; */
   /* padding: 0 0.6em; */
 }
 
 #workspaces button.urgent {
   background-color: @warning;
-  color: @bgt;
+  color: @fgt;
 }
 
 
@@ -145,9 +147,9 @@
   color: @warning;
 }
 
-#temperature.critical {
+/* #temperature.critical {
   background:  @critical;
-}
+} */
 
 /* #custom-pacman {
   opacity: 1;
@@ -174,8 +176,8 @@
 /* Blinking */
 @keyframes blink-warning {
   70% {
-    color: @fg;
-    border-bottom: 2px solid @fg;
+    color: @bg;
+    border-bottom: 2px solid @bg;
     border-radius: 0px;
     background-color: @none;
   }
@@ -190,8 +192,8 @@
 
 @keyframes blink-charging {
   70% {
-    color: @fgt;
-    border-bottom: 2px solid @fgt;
+    color: @bgt;
+    border-bottom: 2px solid @bgt;
     background-color: @none;
     border-radius: 0px;
   }
@@ -206,8 +208,8 @@
 
 @keyframes blink-critical {
   70% {
-    color: @fg;
-    border-bottom: 2px solid @fg;
+    color: @bg;
+    border-bottom: 2px solid @bg;
     border-radius: 0px;
     background-color: @none;
   }
@@ -251,10 +253,10 @@
 #custom-currency-cny:hover,
 #custom-currency-btc:hover,
 #custom-currency-eth:hover {
-  color:@bgt;
-  background: @fgt;
+  color:@fgt;
+  background: @bgt;
   opacity: 0.5;
-  text-shadow: 1px 1px @fgt;
+  text-shadow: 1px 1px @bgt;
 }
 
 #custom-pomodoro.pomodoro {
@@ -284,8 +286,12 @@
 
 #custom-pacman.available {
   color: @good;
-  border-bottom: 2px solid @good;
-  border-radius: 0px;
+  /* border-bottom: 2px solid @good;
+  border-radius: 0px; */
+}
+
+#custom-vpn {
+  font-size: 1.2em;
 }
 
 #custom-vpn.connected {
@@ -295,7 +301,7 @@
 }
 
 #custom-smb {
-  font-size: 1.3em;
+  font-size: 1.35em;
   padding-right: 7px;
 }
 
@@ -303,4 +309,9 @@
   color: @good;
   border-bottom: 2px solid @good;
   border-radius: 0px;
+}
+
+#custom-powermenu {
+  font-size: 1.1em;
+  padding-right: 7px;
 }

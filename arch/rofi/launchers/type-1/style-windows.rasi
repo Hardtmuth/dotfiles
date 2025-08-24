@@ -9,7 +9,7 @@
 
 /*****----- Configuration -----*****/
 configuration {
-	modi:                       "drun,filebrowser,ssh,window";
+	modi:                       "window";
     show-icons:                 true;
     display-drun:               " Apps";
     display-run:                " Run";
@@ -156,7 +156,7 @@ case-indicator {
 /*****----- Listview -----*****/
 listview {
     enabled:                     true;
-    columns:                     2;
+    columns:                     1;
     lines:                       10;
     cycle:                       true;
     dynamic:                     true;
@@ -249,7 +249,7 @@ element-text {
 
 /*****----- Mode Switcher -----*****/
 mode-switcher{
-    enabled:                     true;
+    enabled:                     false;
     spacing:                     10px;
     margin:                      0px;
     padding:                     0px;

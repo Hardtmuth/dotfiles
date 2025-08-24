@@ -1,8 +1,8 @@
 [{
     "layer": "top",
     "position": "top",
-    "output": "HDMI-A-1",
-    /* "output": "HDMI-A-1", //for multimonitor setup, controlled by script */
+    "output": "eDP-1",
+    /* "output": "eDP-1", //for multimonitor setup, controlled by script */
     "modules-left": [
         "custom/powermenu",
         "custom/hostname", 
@@ -19,10 +19,12 @@
         
         "custom/usb",
         //"custom/divider",
-        "custom/smb",
+        //"cpu",
+        "temperature",
         "memory",
         "disk",
         //"custom/divider",
+        "custom/smb",
         "custom/vpn",
         "network",
         //"custom/divider",
@@ -81,8 +83,8 @@
             "9": "󰂺",
             "10": "",
 		    //"active": "",
-		    "default": "{name}",
-            "urgent": ""
+		    "default": "{name}"
+            //"urgent": ""
 	    },
       "tooltip": false,
       "all-outputs": true, 
@@ -144,7 +146,7 @@
     },
 
     /* Modules Right */
-    /* Эcustom/pacman": {
+    /* custom/pacman": {
         "format": "{icon} {text}",
         "interval": 3600,
         "format-icons": ["", "󰅠"],
@@ -157,7 +159,7 @@
     }, */
 
     "custom/pacman": {
-        "format": "{alt}  {percentage}",
+        "format": "{alt} {text}",
         "interval": 3600,
         "tooltip-format": "system updates",
         "exec": "~/.config/waybar/scripts/checkupdates.sh",
@@ -251,6 +253,7 @@
             ""
         ], */
         "on-click-right": "kitty --hold upower -i /org/freedesktop/UPower/devices/battery_BAT0"
+        //"on-click-right": "kitty --hold upower -i $(upower -e | grep '/battery') | grep --color=never -E 'state|to full|to empty|percentage|voltage|charge-cycles|technology'"
 
     },
 
@@ -349,5 +352,43 @@
         "format": "{alt}",
         "tooltip-format": "click: open connect menu\n\nmiddle click: disconnect\n\nright click: open mount directory",
         "return-type": "json"
+    },
+
+    "cpu": {
+        "interval": 10,
+        "warning-threshold": 65,
+        "critical-threshold": 80,
+        "format": "  {usage}%",
+        "format-alt": "  {usage}% {avg_frequency} GHz"
+        //"max-length": 10
+    },
+
+    /* "cpu": {
+        // "format": "\uF201 {usage}%",
+        "format-critical":  "<span color='#c20821'><b>\uF201 {usage}%</b></span>",
+        "format-high":      "<span color='#e03c52'>\uF201 {usage}%</span>",
+        "format-medium":    "<span color='#85c600'>\uF201 {usage}%</span>",
+        "format-low":       "<span color='grey'>\uF201 {usage}%</span>",
+        "interval": 10,
+        "states": {
+            "critical": 80,
+            "high": 50,
+            "medium": 5,
+            "low": 0
+        }
+    },
+ */
+    "temperature": {
+        // "thermal-zone": 2,
+        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+        "warning-threshold": 65,
+        "critical-threshold": 80,
+        "format-critical": " {temperatureC}°C ",
+        "format-warning": " {temperatureC}°C ",
+        "format": "",//" {temperatureC}°C",
+        "on-click":"kitty --hold sensors"
+    },
+    "custom/syncthing": {
+
     }
 }]

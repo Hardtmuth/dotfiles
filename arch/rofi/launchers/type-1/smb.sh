@@ -30,12 +30,12 @@ run_rofi() {
 chosen="$(run_rofi)"
 case ${chosen} in
     $office_nas)
-		kitty sudo mount -t cifs //10.0.1.29/obmen /mnt/office-nas -o username=aa
+		kitty sudo mount -t cifs //10.0.1.29/obmen /mnt/office-nas -o username=aa,password=TestTest123!,uid=$(id -u)
         ;;
 	$home_nas)
-		kitty sudo mount -t cifs //10.37.40.19/home /mnt/home-nas -o username=link
+		kitty sudo mount -t cifs //10.37.40.19/home /mnt/home-nas -o username=link,uid=$(id -u)
         ;;
-	$home_desktops)
-		kitty sudo mount -t cifs //10.37.40.29 /mnt/home-desktop -o username=link
+	$home_desktop)
+		kitty sudo mount -t cifs //10.37.40.29/share /mnt/home-desktop -o username=link,uid=$(id -u)
         ;;
 esac
