@@ -1,8 +1,8 @@
 [{
     "layer": "top",
     "position": "top",
-    "output": "eDP-1",
-    /* "output": "eDP-1", //for multimonitor setup, controlled by script */
+    "output": "HDMI-A-1",
+    /* "output": "HDMI-A-1", //for multimonitor setup, controlled by script */
     "modules-left": [
         "custom/powermenu",
         "custom/hostname", 
@@ -16,7 +16,6 @@
     "modules-right": [
         //"custom/divider",
         //"tray",
-        
         "custom/usb",
         //"custom/divider",
         //"cpu",
@@ -116,7 +115,8 @@
 
     /* Modules Center */
     "clock": {
-        "format": "󰸗 {:%a %e %b %Y   %H:%M}",
+        "format": "󰸗 {:%a %b%e  %H:%M}",
+        //"format": "󰸗 {:%a %e %b %Y   %H:%M}", //https://fmt.dev/latest/syntax/#chrono-format-specifications
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "on-click": "xdg-open https://calendar.google.com/calendar && hyprctl dispatch focusurgentorlast",
         "calendar": {
@@ -188,7 +188,7 @@
             "car": "",
             "default": ["", "", ""]
         },
-        "on-click": "pavucontrol-qt",
+        "on-click": "kitty -e pulsemixer",
         "on-click-right": "pactl set-source-mute @DEFAULT_SOURCE@ toggle"
     },
 

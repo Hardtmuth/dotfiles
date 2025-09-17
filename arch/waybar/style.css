@@ -13,7 +13,7 @@
 #waybar {
   background-color: @none;
   /* background-color: @bgt; */
-  color: @bgt;
+  color: @fgt;
   font-family: "Iosevka ", "Font Awesome 6";
   /*font-family: "JetBrainsMono NF", "Font Awesome 6";*/
   font-size: 14px;
@@ -46,8 +46,8 @@
 #custom-powermenu {
   padding-left: 0.2em;
   padding-right: 0.2em;
-  color: @bgt;
-  text-shadow: 1px 1px @fgt;
+  color: @fgt;
+  text-shadow: 1px 1px @bgt;
 }
 
 /* Each module that should blink */
@@ -118,28 +118,28 @@
 
 /* Workspaces stuff */
 #workspaces button {
-  color: @bgt;
+  color: @fgt;
   font-size: 1em;
-  text-shadow: 1px 1px @fgt;
+  text-shadow: 1px 1px @bgt;
   margin: 0.1em 0.1em 0 0.1em;
   padding:0.2em 0em;
 }
 
 #workspaces button.active {
   /* background-color: @good; */
-  color: @bgt;
+  color: @fgt;
   /* border-radius: 50px; */
   border-width: 2px;
   border-bottom-style: solid;
   border-radius: 0px;
-  border-color: @bgt;
+  border-color: @fgt;
  /*  text-shadow: 1px 1px @fgt; */
   /* padding: 0 0.6em; */
 }
 
 #workspaces button.urgent {
   background-color: @warning;
-  color: @fgt;
+  color: @bgt;
 }
 
 
@@ -176,7 +176,7 @@
 /* Blinking */
 @keyframes blink-warning {
   70% {
-    color: @bg;
+    color: @fg;
     border-bottom: 2px solid @bg;
     border-radius: 0px;
     background-color: @none;
@@ -192,8 +192,8 @@
 
 @keyframes blink-charging {
   70% {
-    color: @bgt;
-    border-bottom: 2px solid @bgt;
+    color: @fgt;
+    border-bottom: 2px solid @fgt;
     background-color: @none;
     border-radius: 0px;
   }
@@ -208,8 +208,8 @@
 
 @keyframes blink-critical {
   70% {
-    color: @bg;
-    border-bottom: 2px solid @bg;
+    color: @fg;
+    border-bottom: 2px solid @fg;
     border-radius: 0px;
     background-color: @none;
   }
@@ -253,10 +253,10 @@
 #custom-currency-cny:hover,
 #custom-currency-btc:hover,
 #custom-currency-eth:hover {
-  color:@fgt;
+  color:@bgt;
   background: @bgt;
   opacity: 0.5;
-  text-shadow: 1px 1px @bgt;
+  text-shadow: 1px 1px @fgt;
 }
 
 #custom-pomodoro.pomodoro {
