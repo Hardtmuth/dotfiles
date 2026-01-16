@@ -21,6 +21,7 @@ host=`hostname`
 shutdown=' Shutdown'
 reboot=' Reboot'
 lock=' Lock'
+hibernate=' Hibernate'
 suspend=' Suspend'
 logout=' Logout'
 yes=' Yes'
@@ -54,7 +55,7 @@ confirm_exit() {
 
 # Pass variables to rofi dmenu
 run_rofi() {
-	echo -e "$lock\n$suspend\n$logout\n$reboot\n$shutdown" | rofi_cmd
+	echo -e "$lock\n$suspend\n$hibernate\n$logout\n$reboot\n$shutdown" | rofi_cmd
 }
 
 # Execute Command
@@ -70,15 +71,13 @@ run_cmd() {
 			amixer set Master mute
 			systemctl suspend
 		elif [[ $1 == '--logout' ]]; then
-			if [[ "$DESKTOP_SESSION" == 'openbox' ]]; then
-				openbox --exit
-			elif [[ "$DESKTOP_SESSION" == 'bspwm' ]]; then
-				bspc quit
-			elif [[ "$DESKTOP_SESSION" == 'i3' ]]; then
-				i3-msg exit
-			elif [[ "$DESKTOP_SESSION" == 'plasma' ]]; then
-				qdbus org.kde.ksmserver /KSMServer logout 0 0 0
-			fi
+			hyprctl dispatch exit
+		elif [[ $1 == '--lock' ]]; then
+			hyprlock
+		elif [[ $1 == '--hibernate' ]]; then
+			mpc -q pause
+			amixer set Master mute
+			systemctl hibernate
 		fi
 	else
 		exit 0
@@ -95,16 +94,15 @@ case ${chosen} in
 		run_cmd --reboot
         ;;
     $lock)
-		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
-		elif [[ -x '/usr/bin/i3lock' ]]; then
-			i3lock
-		fi
+		run_cmd --lock
         ;;
     $suspend)
 		run_cmd --suspend
         ;;
     $logout)
 		run_cmd --logout
+        ;;
+	$hibernate)
+		run_cmd --hibernate
         ;;
 esac

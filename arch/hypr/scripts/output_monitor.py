@@ -15,7 +15,7 @@ output = subprocess.check_output("hyprctl monitors", shell=True, text=True)
 #    subprocess.run(['sed', '-i', 's/"DP-1"/"eDP-1"/g', '/home/link/.config/waybar/config.jsonc'])
 #    subprocess.run(['sed', '-i', 's/"DP-2"/"eDP-1"/g', '/home/link/.config/waybar/config.jsonc'])
 
-if "DELL" in output:
+if "Xiaomi" in output:
    subprocess.run(['sed', '-i', 's/"DP-1"/"HDMI-A-1"/g', '/home/link/.config/waybar/config.jsonc'])
    subprocess.run(['sed', '-i', 's/"eDP-1"/"HDMI-A-1"/g', '/home/link/.config/waybar/config.jsonc'])
 

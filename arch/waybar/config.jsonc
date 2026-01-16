@@ -1,17 +1,17 @@
 [{
     "layer": "top",
     "position": "top",
-    "output": "HDMI-A-1",
-    /* "output": "HDMI-A-1", //for multimonitor setup, controlled by script */
+    "output": "eDP-1",
+    /* "output": "eDP-1", //for multimonitor setup, controlled by script */
     "modules-left": [
         "custom/powermenu",
-        "custom/hostname", 
-        "custom/cliphist", 
-        "hyprland/workspaces", 
-        "hyprland/window",
-        "custom/media"
+        "custom/hostname",
+        "hyprland/workspaces",
+        "hyprland/window"
+        
     ],
     "modules-center": [
+        "custom/media"
     ],
     "modules-right": [
         //"custom/divider",
@@ -20,11 +20,12 @@
         //"custom/divider",
         //"cpu",
         "temperature",
-        "memory",
-        "disk",
+        //"memory",
+        //"disk",
         //"custom/divider",
         "custom/smb",
         "custom/vpn",
+        "custom/cliphist",
         "network",
         //"custom/divider",
         // "custom/vpn",
@@ -55,7 +56,7 @@
     },
 
     "custom/hostname": {
-        "format": "Think and keep it simple ",
+        "format": "Think and keep it simple",
         "tooltip-format": "left-click: app menu \nright-click: shortcuts",
         "on-click": "~/.config/rofi/launchers/type-1/launcher.sh",
         "on-click-right": "$HOME/.config/waybar/scripts/shortcuts.sh"
@@ -69,8 +70,8 @@
     },
 
     "hyprland/workspaces": {
-      "format": "{icon}",
-      "format-icons": {
+      // "format": "{icon}",
+      /* "format-icons": {
 		    "1": "󰌀",
 		    "2": "󰇰",
 		    "3": "󱅰",
@@ -84,9 +85,66 @@
 		    //"active": "",
 		    "default": "{name}"
             //"urgent": ""
+	    }, */
+        /* "format-icons": {
+		    "1": "File",
+		    "2": "Edit",
+		    "3": "View",
+		    "4": "Go",
+            "5": "Help",
+            "6": "6",
+            "7": "7",
+            "8": "Window",
+            "9": "Document",
+            "10": "Code",
+		    //"active": "",
+		    "default": "{name}"
+            //"urgent": ""
+	    }, */
+        "format-icons": {
+		    "1": "󰎦",
+		    "2": "󰎩",
+		    "3": "󰎬",
+		    "4": "󰎮",
+            "5": "󰎰",
+            "6": "󰎵",
+            "7": "󰎸",
+            "8": "󰎻",
+            "9": "󰎾",
+            "10": "󰎣",
+		    //"active": "",
+		    "default": "{name}",
+            "empty": "",
+            "urgent": ""
 	    },
+      "format": "{id} {windows}",
+      "format-window-separator": " ",
+      "window-rewrite": {
+        "class<chromium>": "󰀹",
+        "class<codium>": "",
+        "class<kitty>": "",
+        "default": "",
+        "class<org.telegram.desktop>": "",
+        "class<whatsdesk>": "",
+        "class<ticktick>": "",
+        "class<org.mozilla.Thunderbird>": "󰇮",
+        "class<RemoteDesktopManager>": "󰢹",
+        "class<WinBox>": "󱇢",
+        "class<nemo>": "",
+        "class<org.kde.dolphin>": "",
+        "class<obsidian>": "󰠮",
+        "class<Anydesk>": "",
+        "class<virt-manager>": "",
+        "class<ONLYOFFICE>": "󰧮",
+        "class<steam>": "󰓓",
+        "class<rudesktop>": "",
+        "class<rustdesk>": "",
+        "class<hiddify>": "󰖂",
+        "class<HTTPie>": "󱃷",
+        "class<Bitrix24>": "󰵅"
+    },
       "tooltip": false,
-      "all-outputs": true, 
+      "all-outputs": false, 
       "on-click": "activate",
       "disable-scroll": true
     },
@@ -105,17 +163,40 @@
     },
 
     "hyprland/window": {
-        "format": "{title}",
+        "format": "{class}{title}",
         "icon": false,
         "icon-size": 16,
         "tooltip-format": "{class}",
-		"separate-outputs": false
+		"separate-outputs": false,
         // "on-click": "dolphin"
+        "rewrite": {
+            "kitty(.*)": "Terminal: $1",
+            "chromium(.*) - Chromium": "Browser: $1",
+            "codium(.*) - VSCodium": "Code: $1",
+            "org.telegram.desktop(.*)": "Telegram: $1",
+            "whatsdesk(.*)": "WhatsApp: $1",
+            "ticktick(.*) - TickTick": "ToDo: $1",
+            "org.mozilla.Thunderbird(.*) - Mozilla Thunderbird": "Mail: $1",
+            "RemoteDesktopManager(.*)": "Remote Desktop Manager",
+            "WinBox(.*) WinBox": "WinBox: $1",
+            "nemo(.*)": "File Manager: $1",
+            "org.kde.dolphin(.*) — Dolphin": "File Manager: $1",
+            "obsidian(.*) - obsidian - Obsidian(.*)": "Notes: $1",
+            "Anydesk(.*)": "AnyDesk",
+            "virt-manager(.*)": "Virtual Machine Manager",
+            "ONLYOFFICE(.*)": "Office: $1",
+            "steam(.*)": "Steam",
+            "rudesktop(.*)": "RuDesktop",
+            "rustdesk(.*)": "RustDesk",
+            "hiddify(.*)": "Hiddify",
+            "HTTPie(.*)": "HTTPie",
+            "^$": "Desktop"
+        }
     },
 
     /* Modules Center */
     "clock": {
-        "format": "󰸗 {:%a %b%e  %H:%M}",
+        "format": "󰸗 {:%a %b %e  %H:%M}",
         //"format": "󰸗 {:%a %e %b %Y   %H:%M}", //https://fmt.dev/latest/syntax/#chrono-format-specifications
         "tooltip-format": "<tt><small>{calendar}</small></tt>",
         "on-click": "xdg-open https://calendar.google.com/calendar && hyprctl dispatch focusurgentorlast",
@@ -272,12 +353,13 @@
 
     "network": {
         //"format-wifi": " {essid}",
-        "format-wifi": " {essid}  󰈀 {ifname}: {ipaddr}",
+        //"format-wifi": " {essid}  󰈀 {ifname}: {ipaddr}",
+        "format-wifi": " {essid}",
         "format-ethernet": "󰈀 {ifname}: {ipaddr}",
         //"format-ethernet": "󰈀 {ifname}: {ipaddr}/{cidr}",
         "format-linked": "{ifname} (No IP) ",
         "format-disconnected": "󰌙 disconnected",
-        "format-alt": "󰈀 {ifname}: {ipaddr}",
+        "format-alt": " {essid}  󰈀 {ifname}: {ipaddr}",
         "family": "ipv4",
         "tooltip-format-wifi": "  {ifname} @ {essid}\nIP: {ipaddr}\nStrength: {signalStrength}%\nFreq: {frequency}MHz\n {bandwidthUpBits}  {bandwidthDownBits}",
         "tooltip-format-ethernet": "󰈀  {ifname}\nIP: {ipaddr}\n {bandwidthUpBits}  {bandwidthDownBits}",

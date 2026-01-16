@@ -72,14 +72,14 @@ textbox-prompt-colon {
     padding:                     10px 14px;
     border-radius:               10px;
     background-color:            @urgent;
-    text-color:                  @background;
+    text-color:                  @foreground;
 }
 prompt {
     enabled:                     true;
     padding:                     10px;
     border-radius:               10px;
     background-color:            @active;
-    text-color:                  @background;
+    text-color:                  @foreground;
 }
 
 /*****----- Message -----*****/
@@ -115,7 +115,7 @@ error-message {
 listview {
     enabled:                     true;
     columns:                     1;
-    lines:                       5;
+    lines:                       6;
     cycle:                       true;
     dynamic:                     true;
     scrollbar:                   false;
@@ -157,5 +157,5 @@ element-text {
 }
 element selected.normal {
     background-color:            var(selected);
-    text-color:                  var(background);
+    text-color:                  var(foreground);
 }

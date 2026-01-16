@@ -1,5 +1,5 @@
-@import url("./waybar_colors/dark-colors.css");
-/* @import url("./waybar_colors/dark-colors.css"); */
+@import url("./waybar_colors/light-colors.css");
+/* @import url("./waybar_colors/dark-colors.css"); */ 
 
 /* Reset all styles */
 * {
@@ -121,25 +121,24 @@
   color: @fgt;
   font-size: 1em;
   text-shadow: 1px 1px @bgt;
-  margin: 0.1em 0.1em 0 0.1em;
+  /* margin: 0.1em 0 0 0; */
   padding:0.2em 0em;
 }
 
 #workspaces button.active {
   /* background-color: @good; */
-  color: @fgt;
-  /* border-radius: 50px; */
-  border-width: 2px;
+  color: @fg;
+  /* border-width: 1px;
   border-bottom-style: solid;
   border-radius: 0px;
-  border-color: @fgt;
+  border-color: @fgt; */
  /*  text-shadow: 1px 1px @fgt; */
   /* padding: 0 0.6em; */
 }
 
 #workspaces button.urgent {
   background-color: @warning;
-  color: @bgt;
+  color: @fgt;
 }
 
 
