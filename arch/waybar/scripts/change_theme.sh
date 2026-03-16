@@ -1,7 +1,7 @@
 #!/bin/bash
 CNFP=/home/link/.config
 
-KITTY_PATH=$CNFP/kitty/kitty.conf
+#KITTY_PATH=$CNFP/kitty/kitty.conf
 ROFI_PATH=$CNFP/rofi/launchers/type-1/shared/colors.rasi
 ROFI_PM_PATH=$CNFP/rofi/powermenu/type-1/shared/colors.rasi
 WAYBAR_PATH=$CNFP/waybar/style.css
@@ -27,7 +27,7 @@ apply_themes() {
         ${SCHEMA} gtk-theme "$LIGHT_THEME"
         ${SCHEMA} icon-theme "$LIGHT_ICONS"
         ${SCHEMA} color-scheme "prefer-light"
-        sed -i "s/dark/light/" "$KITTY_PATH"
+        #sed -i "s/dark/light/" "$KITTY_PATH"
         sed -i "s/dark/light/" "$ROFI_PM_PATH"
         sed -i "s/dark/light/" "$ROFI_PATH"
         #sed -i "s/dark/light/" "$WAYBAR_PATH"
@@ -41,7 +41,7 @@ apply_themes() {
         ${SCHEMA} gtk-theme "$DARK_THEME"
         ${SCHEMA} icon-theme "$DARK_ICONS"
         ${SCHEMA} color-scheme "prefer-dark"
-        sed -i "s/light/dark/" "$KITTY_PATH"
+        #sed -i "s/light/dark/" "$KITTY_PATH"
         sed -i "s/light/dark/" "$ROFI_PATH"
         sed -i "s/light/dark/" "$ROFI_PM_PATH"
         #sed -i "s/light/dark/" "$WAYBAR_PATH"

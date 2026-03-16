@@ -1,5 +1,5 @@
 @import url("./waybar_colors/light-colors.css");
-/* @import url("./waybar_colors/dark-colors.css"); */ 
+/* @import url("./waybar_colors/dark-colors.css"); */
 
 /* Reset all styles */
 * {
@@ -43,6 +43,7 @@
 #custom-vpn,
 #custom-usb,
 #custom-smb,
+#custom-docker,
 #custom-powermenu {
   padding-left: 0.2em;
   padding-right: 0.2em;
@@ -246,6 +247,7 @@
 #custom-vpn:hover,
 #custom-usb:hover,
 #custom-smb:hover,
+#custom-docker:hover,
 #custom-currency-usd:hover,
 #custom-currency-eur:hover,
 #custom-media:hover,

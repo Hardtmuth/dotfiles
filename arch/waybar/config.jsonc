@@ -17,6 +17,7 @@
         //"custom/divider",
         //"tray",
         "custom/usb",
+        "custom/docker",
         //"custom/divider",
         //"cpu",
         "temperature",
@@ -141,10 +142,14 @@
         "class<rustdesk>": "",
         "class<hiddify>": "󰖂",
         "class<HTTPie>": "󱃷",
-        "class<Bitrix24>": "󰵅"
+        "class<Bitrix24>": "󰵅",
+        "class<DBeaver>": "",
+        "class<waypaper>": "",
+        "class<swayimg>": "",
+        "class<xfreerdp>": ""
     },
       "tooltip": false,
-      "all-outputs": false, 
+      "all-outputs": true,
       "on-click": "activate",
       "disable-scroll": true
     },
@@ -190,6 +195,11 @@
             "rustdesk(.*)": "RustDesk",
             "hiddify(.*)": "Hiddify",
             "HTTPie(.*)": "HTTPie",
+            "Bitrix24(.*)": "Bitrix24: $1",
+            "waypaper(.*)": "Waypaper",
+            "DBeaver(.*)": "DBeaver: $1",
+            "swayimg(.*)": "$1",
+            "xfreerdp(.*)": "$1",
             "^$": "Desktop"
         }
     },
@@ -422,6 +432,15 @@
         "on-click-right": "udisksctl unmount -b /dev/sdb1",
         "format": "{alt} {text}",
         "tooltip-format": "plugged usb stick\n\nleft click: open directory\n\nright click: unmount device",
+        "return-type": "json"
+    },
+
+    "custom/docker": {
+	    "interval": 10,
+	    "exec": "$HOME/.config/waybar/scripts/docker-indicator.sh",
+        "on-click": "kitty --hold lazydocker",
+        "format": "{alt} {text}",
+        "tooltip-format": "Docker indicator",
         "return-type": "json"
     },
 
