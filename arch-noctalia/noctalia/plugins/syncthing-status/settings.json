@@ -1,0 +1,9 @@
+{
+  "enabled": false,
+  "apiUrl": "",
+  "apiKey": "",
+  "configPath": "",
+  "verifyTls": false,
+  "pollIntervalMs": 10000,
+  "folderIds": []
+}

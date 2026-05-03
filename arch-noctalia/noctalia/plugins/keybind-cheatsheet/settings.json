@@ -1,0 +1,426 @@
+{
+  "cheatsheetData": [
+    {
+      "title": "Actions",
+      "binds": [
+        {
+          "keys": "Super + SPACE",
+          "desc": "App Launcher"
+        },
+        {
+          "keys": "Super + Shift + Q",
+          "desc": "Session Menu"
+        },
+        {
+          "keys": "Alt + TAB",
+          "desc": "Opened Windows List"
+        },
+        {
+          "keys": "Super + TAB",
+          "desc": "Worspaces Overview"
+        },
+        {
+          "keys": "Super + Alt + L",
+          "desc": "Lock Screen"
+        },
+        {
+          "keys": "Super + M",
+          "desc": "Close Hyprland"
+        },
+        {
+          "keys": "Super + V",
+          "desc": "Clipboard History"
+        }
+      ]
+    },
+    {
+      "title": "Applications",
+      "binds": [
+        {
+          "keys": "Super + RETURN",
+          "desc": "Terminal"
+        },
+        {
+          "keys": "Super + B",
+          "desc": "Browser"
+        },
+        {
+          "keys": "Super + E",
+          "desc": "TUI File Manager"
+        },
+        {
+          "keys": "Super + Shift + E",
+          "desc": "GUI File Manager"
+        },
+        {
+          "keys": "Super + SLASH",
+          "desc": "Text Editor"
+        }
+      ]
+    },
+    {
+      "title": "Screenshots",
+      "binds": [
+        {
+          "keys": "Super + Shift + S",
+          "desc": "Screenshot Region"
+        },
+        {
+          "keys": "PrtSc",
+          "desc": "Screenshot Screen"
+        },
+        {
+          "keys": "Super + PrtSc",
+          "desc": "Screenshot Active Window"
+        }
+      ]
+    },
+    {
+      "title": "Windows",
+      "binds": [
+        {
+          "keys": "Super + Q",
+          "desc": "Kill Active Window"
+        },
+        {
+          "keys": "Super + F",
+          "desc": "Fullscreen Window"
+        },
+        {
+          "keys": "Super + T",
+          "desc": "Float Window Toggle"
+        },
+        {
+          "keys": "Super + R",
+          "desc": "Toggles the split (top/side)"
+        },
+        {
+          "keys": "Super + Shift + T",
+          "desc": "Center One Window Toggle"
+        }
+      ]
+    },
+    {
+      "title": "Focus",
+      "binds": [
+        {
+          "keys": "Super + LEFT",
+          "desc": "Move Focus Left"
+        },
+        {
+          "keys": "Super + RIGHT",
+          "desc": "Move Focus Right"
+        },
+        {
+          "keys": "Super + UP",
+          "desc": "Move Focus Up"
+        },
+        {
+          "keys": "Super + DOWN",
+          "desc": "Move Focus Down"
+        },
+        {
+          "keys": "Super + H",
+          "desc": "Move Focus Left"
+        },
+        {
+          "keys": "Super + L",
+          "desc": "Move Focus Right"
+        },
+        {
+          "keys": "Super + K",
+          "desc": "Move Focus Up"
+        },
+        {
+          "keys": "Super + J",
+          "desc": "Move Focus Down"
+        }
+      ]
+    },
+    {
+      "title": "Resize",
+      "binds": [
+        {
+          "keys": "Super + Shift + RIGHT",
+          "desc": "Resize Active Window Right"
+        },
+        {
+          "keys": "Super + Shift + LEFT",
+          "desc": "Resize Active Window Left"
+        },
+        {
+          "keys": "Super + Shift + UP",
+          "desc": "Resize Active Window Up"
+        },
+        {
+          "keys": "Super + Shift + DOWN",
+          "desc": "Resize Active Window Down"
+        },
+        {
+          "keys": "Super + Shift + L",
+          "desc": "Resize Active Window Left"
+        },
+        {
+          "keys": "Super + Shift + H",
+          "desc": "Resize Active Window Right"
+        },
+        {
+          "keys": "Super + Shift + K",
+          "desc": "Resize Active Window Up"
+        },
+        {
+          "keys": "Super + Shift + J",
+          "desc": "Resize Active Window Down"
+        },
+        {
+          "keys": "Super + Left Click",
+          "desc": "Mouse Move Window"
+        },
+        {
+          "keys": "Super + Right Click",
+          "desc": "Mouse Resize Window"
+        }
+      ]
+    },
+    {
+      "title": "Swap",
+      "binds": [
+        {
+          "keys": "Super + Ctrl + RIGHT",
+          "desc": "Move Active Window Right"
+        },
+        {
+          "keys": "Super + Ctrl + LEFT",
+          "desc": "Move Active Window Left"
+        },
+        {
+          "keys": "Super + Ctrl + UP",
+          "desc": "Move Active Window Up"
+        },
+        {
+          "keys": "Super + Ctrl + DOWN",
+          "desc": "Move Active Window Down"
+        },
+        {
+          "keys": "Super + Ctrl + L",
+          "desc": "Move Active Window Right"
+        },
+        {
+          "keys": "Super + Ctrl + H",
+          "desc": "Move Active Window Left"
+        },
+        {
+          "keys": "Super + Ctrl + K",
+          "desc": "Move Active Window Up"
+        },
+        {
+          "keys": "Super + Ctrl + J",
+          "desc": "Move Active Window Down"
+        },
+        {
+          "keys": "Super + G",
+          "desc": "Toggle Window Goup"
+        },
+        {
+          "keys": "Super + Alt + LEFT",
+          "desc": "Switch Focus Left in Goup"
+        },
+        {
+          "keys": "Super + Alt + RIGHT",
+          "desc": "Switch Focus Right in Goup"
+        }
+      ]
+    },
+    {
+      "title": "Workspaces",
+      "binds": [
+        {
+          "keys": "Super + 1",
+          "desc": "Go to Worspace 1"
+        },
+        {
+          "keys": "Super + 2",
+          "desc": "Go to Worspace 2"
+        },
+        {
+          "keys": "Super + 3",
+          "desc": "Go to Worspace 3"
+        },
+        {
+          "keys": "Super + 4",
+          "desc": "Go to Worspace 4"
+        },
+        {
+          "keys": "Super + 5",
+          "desc": "Go to Worspace 5"
+        },
+        {
+          "keys": "Super + 6",
+          "desc": "Go to Worspace 6"
+        },
+        {
+          "keys": "Super + 7",
+          "desc": "Go to Worspace 7"
+        },
+        {
+          "keys": "Super + 8",
+          "desc": "Go to Worspace 8"
+        },
+        {
+          "keys": "Super + 9",
+          "desc": "Go to Worspace 9"
+        },
+        {
+          "keys": "Super + 0",
+          "desc": "Go to Worspace 10"
+        },
+        {
+          "keys": "Super + Shift + 1",
+          "desc": "Move Window to Worspace 1"
+        },
+        {
+          "keys": "Super + Shift + 2",
+          "desc": "Move Window to Worspace 2"
+        },
+        {
+          "keys": "Super + Shift + 3",
+          "desc": "Move Window to Worspace 3"
+        },
+        {
+          "keys": "Super + Shift + 4",
+          "desc": "Move Window to Worspace 4"
+        },
+        {
+          "keys": "Super + Shift + 5",
+          "desc": "Move Window to Worspace 5"
+        },
+        {
+          "keys": "Super + Shift + 6",
+          "desc": "Move Window to Worspace 6"
+        },
+        {
+          "keys": "Super + Shift + 7",
+          "desc": "Move Window to Worspace 7"
+        },
+        {
+          "keys": "Super + Shift + 8",
+          "desc": "Move Window to Worspace 8"
+        },
+        {
+          "keys": "Super + Shift + 9",
+          "desc": "Move Window to Worspace 9"
+        },
+        {
+          "keys": "Super + Shift + 0",
+          "desc": "Move Window to Worspace 10"
+        },
+        {
+          "keys": "Super + Scroll Down",
+          "desc": "Mouse Switch Worspace +1"
+        },
+        {
+          "keys": "Super + Scroll Up",
+          "desc": "Mouse Switch Worspace -1"
+        }
+      ]
+    },
+    {
+      "title": "Multimonitor",
+      "binds": [
+        {
+          "keys": "Super + Ctrl + D",
+          "desc": "Disable Notebook Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + E",
+          "desc": "Enable Notebook Monitor"
+        },
+        {
+          "keys": "Super + Alt + D",
+          "desc": "Disable Side Monitor"
+        },
+        {
+          "keys": "Super + Alt + E",
+          "desc": "Disable Side Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + 1",
+          "desc": "Move Worspace 1 to Side Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + 2",
+          "desc": "Move Worspace 2 to Side Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + 3",
+          "desc": "Move Worspace 3 to Side Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + 4",
+          "desc": "Move Worspace 4 to Side Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + 5",
+          "desc": "Move Worspace 5 to Side Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + 6",
+          "desc": "Move Worspace 6 to Side Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + 7",
+          "desc": "Move Worspace 7 to Side Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + 8",
+          "desc": "Move Worspace 8 to Side Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + 9",
+          "desc": "Move Worspace 9 to Side Monitor"
+        },
+        {
+          "keys": "Super + Ctrl + 0",
+          "desc": "Move Worspace 10 to Side Monitor"
+        }
+      ]
+    },
+    {
+      "title": "Fn keys",
+      "binds": [
+        {
+          "keys": "Bright Up",
+          "desc": "Increase brightness by 10%"
+        },
+        {
+          "keys": "Bright Down",
+          "desc": "Reduce brightness by 10%\""
+        },
+        {
+          "keys": "Vol Up",
+          "desc": "Increase volume by 5%"
+        },
+        {
+          "keys": "Vol Down",
+          "desc": "Reduce volume by 5%"
+        },
+        {
+          "keys": "Mute",
+          "desc": "Mute volume"
+        },
+        {
+          "keys": "Mic Mute",
+          "desc": "Toggle Microphone"
+        }
+      ]
+    }
+  ],
+  "detectedCompositor": "hyprland",
+  "windowWidth": 1400,
+  "windowHeight": 850,
+  "autoHeight": true,
+  "columnCount": 3,
+  "modKeyVariable": "$mainMod",
+  "hyprlandConfigPath": "~/.config/hypr/hyprland.conf",
+  "niriConfigPath": "~/.config/niri/config.kdl"
+}
